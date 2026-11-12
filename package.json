@@ -1,8 +1,8 @@
 {
-  "name": "ca-chep-vuot-vu-mon-v2",
-  "version": "2.0.0",
+  "name": "ca-chep-vuot-vu-mon-v2-3d",
+  "version": "2.1.0",
   "private": true,
-  "description": "Game luyện phân biệt âm đầu L/N cho trẻ em, có nhận dạng giọng nói qua máy chủ.",
+  "description": "Game luyện L/N phong cách 3D-look, thu âm và nhận dạng tiếng Việt qua serverless API.",
   "engines": {
     "node": ">=22.0.0"
   },

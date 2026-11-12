@@ -49,17 +49,21 @@ module.exports = async function handler(req, res) {
       const transcript = await client.audio.transcriptions.create({
         file: fs.createReadStream(audio.filepath),
         model: 'gpt-transcribe',
-        languages: ['vi'],
-        prompt: 'Đây là tiếng Việt phổ thông do trẻ em đọc một từ hoặc cụm từ ngắn trong bài tập học tiếng Việt. Hãy chép lại đúng những gì nghe được, không tự sửa, không thêm từ.'
+        language: 'vi',
+        prompt: 'Đây là bản ghi tiếng Việt phổ thông. Người nói đọc một từ hoặc cụm từ ngắn trong bài luyện phân biệt âm đầu L và N. Hãy chép lại chính xác những gì nghe được, không tự sửa, không thêm từ.'
       });
       return res.status(200).json({ text: transcript.text || '' });
     } finally {
       fs.unlink(audio.filepath, () => {});
     }
   } catch (error) {
-    console.error('Transcription error:', error?.message || error);
+    console.error('Transcription error:', {
+      message: error?.message || String(error),
+      status: error?.status || error?.httpCode || null,
+      code: error?.code || null
+    });
     const status = error?.httpCode === 413 ? 413 : 502;
-    return res.status(status).json({ error: status === 413 ? 'Bản ghi quá lớn. Hãy đọc ngắn hơn.' : 'Dịch vụ chưa nhận dạng được bản ghi. Vui lòng thử lại.' });
+    return res.status(status).json({ error: status === 413 ? 'Bản ghi quá lớn. Hãy đọc ngắn hơn.' : 'Máy chủ đã nhận được bản ghi nhưng dịch vụ phiên âm đang lỗi. Chủ ứng dụng hãy kiểm tra Vercel Runtime Logs và OpenAI API Billing.' });
   }
 };
 

@@ -1,24 +1,46 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" role="img" aria-labelledby="t d"><title id="t">Cá chép vàng cam</title><desc id="d">Cá chép phong cách minh họa cao cấp với vảy ánh kim, vây dài và đuôi xòe.</desc><defs>
- <linearGradient id="body" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff3c5"/><stop offset=".22" stop-color="#f9cf70"/><stop offset=".52" stop-color="#ee8d32"/><stop offset=".78" stop-color="#bd4d20"/><stop offset="1" stop-color="#6e2d1d"/></linearGradient>
- <linearGradient id="gold" x1="0" y1="0" x2=".9" y2="1"><stop stop-color="#fff1a8"/><stop offset=".35" stop-color="#eeb14a"/><stop offset=".7" stop-color="#c66a25"/><stop offset="1" stop-color="#7f321b"/></linearGradient>
- <linearGradient id="fin" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff1bf" stop-opacity=".95"/><stop offset=".45" stop-color="#ef9c42" stop-opacity=".8"/><stop offset="1" stop-color="#a83c24" stop-opacity=".5"/></linearGradient>
- <radialGradient id="shine"><stop stop-color="#fffbdc" stop-opacity=".9"/><stop offset="1" stop-color="#fffbdc" stop-opacity="0"/></radialGradient>
- <pattern id="scales" width="34" height="27" patternUnits="userSpaceOnUse"><path d="M0 13 Q17 -8 34 13 Q17 34 0 13Z" fill="none" stroke="#fff0b4" stroke-width="2" opacity=".72"/><path d="M4 13Q17 0 30 13" fill="none" stroke="#a84c22" stroke-width="1" opacity=".42"/></pattern>
- <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="13"/></filter>
- <clipPath id="bodyClip"><path d="M180 274 C250 165 430 144 598 210 C660 235 704 272 736 302 C680 338 623 374 551 395 C389 445 244 389 180 310 C163 297 163 287 180 274Z"/></clipPath>
- </defs>
- <ellipse cx="450" cy="440" rx="300" ry="40" fill="#031d2d" opacity=".3" filter="url(#shadow)"/>
- <!-- flowing tail --> <path d="M630 295 C725 205 790 128 861 105 C837 194 824 251 775 303 C842 347 865 407 874 485 C791 450 714 388 632 335Z" fill="url(#fin)" stroke="#f8c76e" stroke-width="5"/><path d="M647 304Q780 185 850 125M650 315Q790 305 862 465M663 319Q750 270 817 220M665 328Q755 366 840 436" fill="none" stroke="#ffe6a1" stroke-width="4" opacity=".8"/>
- <!-- dorsal fin --> <path d="M282 214 Q350 105 455 112 Q508 118 552 201 Q456 174 370 204Z" fill="url(#fin)" stroke="#e9aa50" stroke-width="4"/><path d="M318 194Q377 128 451 126M360 200Q414 147 485 139M409 193Q455 154 516 166" fill="none" stroke="#fff0bb" stroke-width="3" opacity=".75"/>
- <!-- belly fin --> <path d="M370 374Q340 472 270 510Q288 425 335 367Z" fill="url(#fin)" stroke="#d98737" stroke-width="4"/><path d="M352 382Q318 446 286 490M360 386Q348 445 328 478" fill="none" stroke="#fff0b6" stroke-width="3"/>
- <!-- pectoral fin --> <path d="M520 338Q590 397 590 493Q527 466 477 375Z" fill="url(#fin)" stroke="#d27b31" stroke-width="4"/><path d="M508 361Q547 421 571 473M525 355Q571 410 583 461M492 372Q518 427 540 467" fill="none" stroke="#ffe8ae" stroke-width="3"/>
- <!-- body --> <path d="M180 274 C250 165 430 144 598 210 C660 235 704 272 736 302 C680 338 623 374 551 395 C389 445 244 389 180 310 C163 297 163 287 180 274Z" fill="url(#body)" stroke="#71341f" stroke-width="8"/>
- <g clip-path="url(#bodyClip)"><path d="M180 260Q260 190 348 198Q410 208 438 268Q380 308 300 305Q230 303 180 332Z" fill="#fff4d0" opacity=".92"/><path d="M435 188Q526 174 618 226Q662 252 688 298Q615 300 562 276Q490 247 435 188Z" fill="#f6a53e" opacity=".88"/><path d="M250 334Q325 287 393 315Q440 336 473 405Q365 433 275 390Z" fill="#fff0c6" opacity=".82"/><rect x="180" y="170" width="560" height="270" fill="url(#scales)" opacity=".85"/><ellipse cx="390" cy="225" rx="190" ry="90" fill="url(#shine)"/></g>
- <!-- gill and face --> <path d="M650 246Q612 296 650 352" fill="none" stroke="#9e4a25" stroke-width="7" opacity=".65"/><path d="M677 275Q696 300 677 327" fill="none" stroke="#fff0bd" stroke-width="3" opacity=".8"/>
- <path d="M712 283Q751 278 767 300Q746 322 711 316" fill="#efad4e" stroke="#78351e" stroke-width="5"/><path d="M746 300Q774 287 790 300" fill="none" stroke="#71351f" stroke-width="5" stroke-linecap="round"/>
- <!-- eye --> <circle cx="688" cy="269" r="15" fill="#fff4d4"/><circle cx="692" cy="269" r="9" fill="#182a2b"/><circle cx="695" cy="265" r="3" fill="#fff"/>
- <!-- whiskers --> <path d="M724 280Q779 246 812 264M724 315Q783 350 818 334" fill="none" stroke="#f8d58c" stroke-width="5" stroke-linecap="round"/>
- <!-- scales highlight --> <path d="M266 248Q354 177 452 199M300 363Q392 410 484 391" fill="none" stroke="#fff8d9" stroke-width="8" opacity=".36" stroke-linecap="round"/>
- <!-- fins rays --> <path d="M300 215Q350 166 400 151M335 219Q397 170 452 151M375 220Q431 183 496 174" fill="none" stroke="#fff2c2" stroke-width="3" opacity=".8"/>
- <g fill="#ffe7a4" opacity=".85"><circle cx="250" cy="205" r="4"/><circle cx="455" cy="112" r="5"/><circle cx="833" cy="116" r="4"/><circle cx="866" cy="477" r="5"/></g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-labelledby="title desc">
+<title id="title">Cá chép vàng cam</title><desc id="desc">Cá chép nhìn nghiêng, thân thuôn cân đối, đầu tròn rõ, mắt, miệng, mang, vây lưng, vây bụng và đuôi cá chẻ đôi đặc trưng.</desc>
+<defs>
+ <linearGradient id="body" x1="0" y1="0" x2=".15" y2="1"><stop stop-color="#fff4c9"/><stop offset=".18" stop-color="#f8d27c"/><stop offset=".48" stop-color="#e99438"/><stop offset=".78" stop-color="#c85d27"/><stop offset="1" stop-color="#71351f"/></linearGradient>
+ <linearGradient id="fin" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffe9aa"/><stop offset=".42" stop-color="#e99a43"/><stop offset="1" stop-color="#a94b26"/></linearGradient>
+ <linearGradient id="tail" x1="0" y1="0" x2=".9" y2="1"><stop stop-color="#fff0bb"/><stop offset=".45" stop-color="#e7a04a"/><stop offset="1" stop-color="#9d4927"/></linearGradient>
+ <radialGradient id="shine" cx="35%" cy="20%"><stop stop-color="#fffde8" stop-opacity=".9"/><stop offset="1" stop-color="#fffde8" stop-opacity="0"/></radialGradient>
+ <pattern id="scales" width="30" height="24" patternUnits="userSpaceOnUse"><path d="M0 12 Q15 -7 30 12 Q15 31 0 12Z" fill="none" stroke="#fff0bd" stroke-width="1.8" opacity=".72"/><path d="M3 12Q15 1 27 12" fill="none" stroke="#9b4b25" stroke-width=".9" opacity=".38"/></pattern>
+ <filter id="shadow" x="-30%" y="-40%" width="160%" height="190%"><feGaussianBlur stdDeviation="15"/></filter>
+ <clipPath id="bodyClip"><path d="M205 251 C245 177 360 139 493 151 C608 160 687 203 719 258 C700 315 642 358 546 377 C413 404 284 363 218 309 C195 291 190 271 205 251Z"/></clipPath>
+</defs>
+<!-- soft ground shadow --> <ellipse cx="455" cy="423" rx="330" ry="28" fill="#031827" opacity=".34" filter="url(#shadow)"/>
+<!-- forked tail: unmistakable caudal fin -->
+<path d="M230 260 C177 236 131 182 63 125 C80 209 111 253 162 270 C111 292 83 344 62 414 C133 369 187 324 235 297Z" fill="url(#tail)" stroke="#9b5128" stroke-width="7" stroke-linejoin="round"/>
+<path d="M221 267Q139 190 82 143M216 278Q131 274 87 270M220 289Q137 344 82 395" fill="none" stroke="#fff0bf" stroke-width="5" opacity=".8" stroke-linecap="round"/>
+<!-- dorsal fin -->
+<path d="M345 166 Q377 91 439 94 Q490 99 524 165 Q455 151 390 174Z" fill="url(#fin)" stroke="#a85b2c" stroke-width="5"/>
+<path d="M373 157Q405 112 438 105M410 160Q450 115 480 119M449 158Q481 130 505 144" fill="none" stroke="#fff0bd" stroke-width="3.5" opacity=".8"/>
+<!-- lower pelvic fin -->
+<path d="M365 357Q335 426 282 452Q293 390 330 342Z" fill="url(#fin)" stroke="#a85b2c" stroke-width="4"/>
+<path d="M347 365Q321 412 299 438M359 365Q348 408 334 430" fill="none" stroke="#fff0bd" stroke-width="3"/>
+<!-- pectoral fin behind body -->
+<path d="M534 319Q597 350 610 428Q552 411 504 348Z" fill="url(#fin)" stroke="#a85b2c" stroke-width="5"/>
+<path d="M529 337Q569 377 591 412M543 331Q583 365 602 399M514 348Q545 387 565 405" fill="none" stroke="#fff0bd" stroke-width="3"/>
+<!-- balanced torpedo body -->
+<path d="M205 251 C245 177 360 139 493 151 C608 160 687 203 719 258 C700 315 642 358 546 377 C413 404 284 363 218 309 C195 291 190 271 205 251Z" fill="url(#body)" stroke="#71391f" stroke-width="8"/>
+<g clip-path="url(#bodyClip)">
+ <path d="M199 240Q264 177 347 182Q398 187 423 237Q365 278 292 278Q235 275 199 303Z" fill="#fff5d9" opacity=".92"/>
+ <path d="M449 151Q571 149 663 215Q694 238 710 275Q640 285 572 257Q506 230 449 151Z" fill="#f2a64a" opacity=".8"/>
+ <path d="M278 310Q350 277 417 307Q459 329 480 383Q374 394 295 352Z" fill="#fff0c7" opacity=".86"/>
+ <rect x="195" y="135" width="540" height="270" fill="url(#scales)" opacity=".86"/>
+ <ellipse cx="424" cy="208" rx="205" ry="100" fill="url(#shine)"/>
+</g>
+<!-- gill plate -->
+<path d="M634 207Q594 267 634 332" fill="none" stroke="#994820" stroke-width="7" opacity=".68"/>
+<path d="M650 225Q621 269 650 315" fill="none" stroke="#ffe6a9" stroke-width="3" opacity=".75"/>
+<!-- head, mouth and barbels -->
+<path d="M683 239Q724 239 751 259Q735 284 686 283" fill="#e9a14a" stroke="#71391f" stroke-width="5"/>
+<path d="M737 262Q761 252 781 260" fill="none" stroke="#71391f" stroke-width="5" stroke-linecap="round"/>
+<path d="M744 269Q777 286 800 280M744 251Q770 235 794 239" fill="none" stroke="#e9c17b" stroke-width="4" stroke-linecap="round"/>
+<!-- eye -->
+<circle cx="685" cy="225" r="17" fill="#fff7dc" stroke="#8d4a29" stroke-width="3"/><circle cx="690" cy="225" r="10" fill="#172a2d"/><circle cx="693" cy="221" r="3.5" fill="#fff"/>
+<!-- highlight contour -->
+<path d="M256 231Q350 153 463 166Q558 170 622 215" fill="none" stroke="#fff8df" stroke-width="8" opacity=".42" stroke-linecap="round"/>
+<path d="M288 349Q405 395 516 365" fill="none" stroke="#71391f" stroke-width="5" opacity=".22" stroke-linecap="round"/>
 </svg>
