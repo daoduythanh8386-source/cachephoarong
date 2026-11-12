@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+<defs>
+ <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#bce9ed"/><stop offset="1" stop-color="#f4e7c5"/></linearGradient>
+ <linearGradient id="water" x2="0" y2="1"><stop stop-color="#49b8b0"/><stop offset="1" stop-color="#075b70"/></linearGradient>
+ <linearGradient id="wall" x2="0" y2="1"><stop stop-color="#e7c98f"/><stop offset="1" stop-color="#a66e43"/></linearGradient>
+</defs>
+<rect width="1600" height="900" fill="url(#sky)"/>
+<circle cx="1320" cy="130" r="68" fill="#fff1bd" opacity=".8"/>
+<path d="M0 390 Q250 270 500 390 T1000 380 T1600 350 V620 H0Z" fill="#8bb7a1" opacity=".5"/>
+<!-- Hoàng thành cách điệu -->
+<g transform="translate(170 190)">
+ <path d="M0 270 V90 H90 V30 H360 V90 H450 V270Z" fill="url(#wall)" stroke="#86583b" stroke-width="8"/>
+ <path d="M-18 95 L45 45 L135 95 M310 95 L360 45 L468 95" fill="#a74b35" stroke="#743b2d" stroke-width="10"/>
+ <path d="M110 30 L225 -25 L340 30" fill="#a74b35" stroke="#743b2d" stroke-width="12"/>
+ <path d="M160 270 V170 Q225 100 290 170 V270" fill="#674a3d"/>
+ <rect x="206" y="-15" width="38" height="65" fill="#d6b77e"/>
+ <path d="M225 -15 V-120" stroke="#594b3e" stroke-width="7"/>
+ <path d="M232 -115 L330 -92 L232 -65Z" fill="#d92332"/>
+ <path d="M274 -101 l7 15 16 1 -12 10 4 16 -15 -9 -14 9 4 -16 -12 -10 16 -1Z" fill="#ffdf54"/>
+</g>
+<!-- Dinh Độc Lập cách điệu -->
+<g transform="translate(950 250)">
+ <rect x="0" y="115" width="410" height="170" rx="4" fill="#e9d6a9" stroke="#8b7958" stroke-width="7"/>
+ <rect x="38" y="70" width="334" height="55" fill="#d8c69d" stroke="#8b7958" stroke-width="6"/>
+ <rect x="80" y="25" width="250" height="45" fill="#d8c69d" stroke="#8b7958" stroke-width="6"/>
+ <g fill="#426f68"><rect x="35" y="145" width="55" height="110"/><rect x="125" y="145" width="55" height="110"/><rect x="215" y="145" width="55" height="110"/><rect x="305" y="145" width="55" height="110"/></g>
+ <path d="M205 25 V-75" stroke="#5b5147" stroke-width="6"/>
+ <path d="M211 -70 L310 -48 L211 -26Z" fill="#d92332"/>
+ <path d="M251 -58 l7 13 14 1 -11 9 3 14 -13 -8 -13 8 4 -14 -11 -9 14 -1Z" fill="#ffdf54"/>
+</g>
+<path d="M0 555 Q250 510 500 565 T1000 555 T1600 550 V900 H0Z" fill="url(#water)"/>
+<g fill="none" stroke="#b6f3e4" stroke-width="5" opacity=".65">
+ <path d="M0 650 Q160 620 320 650 T640 650 T960 650 T1280 650 T1600 650"/>
+ <path d="M-40 730 Q120 700 280 730 T600 730 T920 730 T1240 730 T1560 730"/>
+ <path d="M80 820 Q240 790 400 820 T720 820 T1040 820 T1360 820"/>
+</g>
+<!-- sen -->
+<g fill="#327e61" opacity=".95"><ellipse cx="160" cy="700" rx="95" ry="24"/><ellipse cx="1450" cy="760" rx="110" ry="27"/></g>
+<g fill="#f6a8a5"><circle cx="160" cy="680" r="18"/><circle cx="142" cy="670" r="16"/><circle cx="178" cy="670" r="16"/></g>
+</svg>

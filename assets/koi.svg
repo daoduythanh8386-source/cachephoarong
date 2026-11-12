@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300">
+<defs><linearGradient id="gold" x2="0" y2="1"><stop stop-color="#fff2a1"/><stop offset=".48" stop-color="#f7b72f"/><stop offset="1" stop-color="#c76b17"/></linearGradient></defs>
+<path d="M115 150 C45 65 10 75 28 145 C-2 210 54 230 120 174 C205 260 365 220 405 150 C365 80 205 42 115 126Z" fill="url(#gold)" stroke="#9d581b" stroke-width="7"/>
+<path d="M150 126 Q230 20 290 92 Q245 135 150 144Z" fill="#f5cf55" stroke="#b77720" stroke-width="5"/>
+<path d="M160 180 Q240 275 300 205 Q240 175 160 164Z" fill="#f5cf55" stroke="#b77720" stroke-width="5"/>
+<path d="M390 148 Q455 85 495 105 Q470 150 500 194 Q445 215 390 158Z" fill="#efaa27" stroke="#9d581b" stroke-width="6"/>
+<path d="M95 144 Q150 105 220 132" fill="none" stroke="#fff1b0" stroke-width="12" opacity=".8"/>
+<circle cx="365" cy="132" r="9" fill="#202b34"/><circle cx="368" cy="129" r="3" fill="white"/>
+<path d="M395 165 Q420 175 438 163" fill="none" stroke="#8e4319" stroke-width="4"/>
+<g fill="none" stroke="#fff0a3" stroke-width="3" opacity=".7"><path d="M180 140 q20 -20 40 0"/><path d="M230 145 q20 -20 40 0"/><path d="M280 150 q20 -20 40 0"/></g>
+</svg>
