@@ -1,109 +1,47 @@
 <!doctype html>
 <html lang="vi">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0b6571">
-  <meta name="description" content="Game giáo dục luyện phân biệt âm L và N cho trẻ em – Cá Chép Vượt Vũ Môn.">
-  <title>Cá Chép Vượt Vũ Môn</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Yeseva+One&display=swap" rel="stylesheet">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#071f35"><meta name="description" content="Cá Chép Vượt Vũ Môn V2 – trò chơi luyện phân biệt âm đầu L và N cho trẻ em.">
+  <title>Cá Chép Vượt Vũ Môn · V2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="ambient"></div>
+  <div class="aurora"></div><div class="grain"></div>
   <header class="topbar">
-    <a class="brand" href="#" aria-label="Trang chủ Cá Chép Vượt Vũ Môn"><span class="brand-mark">🐉</span><span>CÁ CHÉP<br><b>VƯỢT VŨ MÔN</b></span></a>
-    <div class="top-actions">
-      <label class="sr-only" for="language">Ngôn ngữ</label>
-      <select id="language" aria-label="Chọn ngôn ngữ"><option value="vi">Tiếng Việt</option><option value="en">English</option><option value="zh">中文</option></select>
-      <button class="icon-btn" id="soundToggle" aria-label="Bật tắt âm thanh" title="Bật/tắt âm thanh">🔊</button>
-    </div>
+    <a class="brand" href="#home"><span class="brand-emblem">龍</span><span><small>HÀNH TRÌNH TRI THỨC VIỆT</small><b>CÁ CHÉP VƯỢT VŨ MÔN</b></span></a>
+    <div class="top-actions"><span class="vietnam-flag" aria-label="Quốc kỳ Việt Nam">★</span><button class="sound-toggle" id="soundToggle" aria-label="Bật tắt âm thanh">♫</button></div>
   </header>
-
   <main>
     <section class="hero" id="home">
       <div class="hero-copy">
-        <div class="eyebrow"><span>✦</span> HÀNH TRÌNH TRI THỨC VIỆT <span>✦</span></div>
-        <h1>CÁ CHÉP<br><em>VƯỢT VŨ MÔN</em></h1>
-        <p class="tagline" data-i18n="tagline">Đọc đúng L – N, cá bơi nhanh, vượt được cổng!</p>
-        <p class="intro" data-i18n="intro">Cùng cá chép vàng luyện từng âm, khám phá những miền di sản Việt Nam và chinh phục hành trình hóa rồng.</p>
-        <div class="hero-buttons">
-          <button class="btn btn-primary" id="startChoice">🐟 <span data-i18n="play">Chơi bằng cách chọn chữ</span></button>
-          <button class="btn btn-outline" id="startMic">🎙️ <span data-i18n="mic">Luyện nói bằng micro</span></button>
-        </div>
-        <p class="micro-note" data-i18n="micnote">Micro là tính năng thử nghiệm; kết quả nhận dạng giọng nói không thay thế đánh giá chuyên môn phát âm.</p>
+        <div class="eyebrow"><i></i> PHIÊN BẢN V2 · HỌC QUA TRẢI NGHIỆM</div>
+        <h1>ĐÁNH THỨC<br><em>KHÍ PHÁCH</em><br>CÁ CHÉP VIỆT</h1>
+        <p class="hero-lead">Phân biệt âm đầu <b>L – N</b>, chinh phục dòng thác và hóa thân thành rồng thiêng.</p>
+        <p class="hero-desc">Mỗi câu trả lời đúng đưa cá chép tiến gần hơn tới Vũ Môn. Học vui, luyện nói và khám phá những dấu ấn di sản Việt Nam.</p>
+        <div class="hero-actions"><button class="btn btn-gold" id="startChoice"><span>✦</span> BẮT ĐẦU THỬ THÁCH</button><button class="btn btn-glass" id="startMic"><span>◉</span> LUYỆN NÓI VỚI MICRO</button></div>
+        <div class="trust-row"><span>✧ 350 mục luyện tập</span><span>✧ Dành cho iPhone & máy tính</span><span>✧ Có chế độ chọn chữ dự phòng</span></div>
       </div>
-      <div class="hero-art">
-        <div class="sun-glow"></div>
-        <img class="hero-koi" src="assets/koi.svg" alt="Minh họa cá chép vàng">
-        <div class="water-ripple ripple-one"></div><div class="water-ripple ripple-two"></div>
-        <div class="hero-stamp">越<br>龍</div>
+      <div class="hero-visual"><div class="halo"></div><div class="sun-disc"></div><div class="hero-water"></div><img src="assets/koi.svg" class="hero-koi" alt="Cá chép vàng cam vảy ánh kim"><div class="gold-spark spark-a">✦</div><div class="gold-spark spark-b">✧</div><div class="seal">越<br>龍</div><div class="hero-caption"><span>01 / THE GOLDEN KOI</span><b>Ý chí vượt ngàn con sóng</b></div></div>
+    </section>
+
+    <section class="game-section" id="game" hidden>
+      <div class="game-top"><div><div class="eyebrow" id="stageEyebrow">CHẶNG 01 · DÒNG SÔNG KHỞI NGUYÊN</div><h2 id="stageTitle">Khởi hành tới Vũ Môn</h2></div><button class="back-btn" id="exitGame">← Trang chủ</button></div>
+      <div class="progress-card"><div class="progress-meta"><span id="questionCount">CÂU 1 / 10</span><b id="scoreLabel">✦ 0 ĐIỂM</b></div><div class="progress-track"><div id="progressBar"></div></div><div class="progress-foot"><span id="streak">Chuỗi đúng: 0</span><span id="distanceText">Hành trình 8%</span></div></div>
+      <div class="river-stage" id="riverScene"><div class="moon"></div><div class="mountain mountain-left"></div><div class="mountain mountain-right"></div><div class="gate"><span id="landmark">CỔNG VŨ MÔN</span><i></i></div><div class="waterfall"></div><div class="water-sheen"></div><div class="river-glow"></div><img id="fish" class="game-fish" src="assets/koi.svg" alt="Cá chép đang bơi"><div class="river-foam"></div><div class="scene-label">DÒNG SÔNG THIÊNG</div></div>
+      <div class="question-panel"><div class="question-kicker"><span id="categoryPill">NHẬN DIỆN ÂM ĐẦU</span><span id="modePill">CHỌN CHỮ</span></div><p class="instruction" id="instruction">Từ này bắt đầu bằng âm nào?</p><div class="target-word" id="targetWord">lá</div><div class="answer-grid" id="answerGrid"><button class="answer-btn" data-answer="L">L <small>LỜ</small></button><button class="answer-btn" data-answer="N">N <small>NỜ</small></button></div>
+        <div class="mic-panel" id="micPanel" hidden><div class="mic-status" id="micStatus">Chạm nút micro, đọc rõ từ trên màn hình.</div><button class="record-btn" id="recordWord"><span class="mic-orb">●</span><span id="recordLabel">CHẠM ĐỂ BẮT ĐẦU NÓI</span></button><div class="transcript" id="transcript" hidden></div><p class="mic-help">Cho phép Safari truy cập micro khi được hỏi. Bản ghi được gửi để nhận dạng; trò chơi không lưu tệp âm thanh.</p></div>
+        <div class="feedback" id="feedback" aria-live="polite">Chọn chữ đúng để giúp cá chép tiến lên nhé!</div><div class="question-actions"><button class="btn btn-gold next-btn" id="nextQuestion" disabled>TIẾP TỤC <span>→</span></button><button class="listen-btn" id="hearWord">♫ Nghe từ mẫu</button></div>
       </div>
     </section>
 
-    <section class="game-shell" id="game" hidden>
-      <div class="game-head">
-        <div><span class="eyebrow" id="stageEyebrow">MÀN 1 · SÔNG THIÊNG VŨ MÔN</span><h2 id="stageTitle">Khởi động hành trình</h2></div>
-        <button class="text-btn" id="exitGame">← <span data-i18n="home">Về trang đầu</span></button>
-      </div>
-      <div class="progress-wrap"><div class="progress-label"><span id="questionCount">Câu 1/10</span><span id="scoreLabel">⭐ 0 điểm</span></div><div class="progress-track"><div id="progressBar"></div></div></div>
-      <div class="river-scene" id="riverScene">
-        <div class="scene-sun"></div><div class="scene-land land-left"></div><div class="scene-land land-right"></div>
-        <div class="landmark" id="landmark">CỔNG VŨ MÔN</div>
-        <div class="flag" aria-label="Cờ đỏ sao vàng"><span>★</span></div>
-        <div class="river-lines"></div>
-        <img id="fish" class="fish" src="assets/koi.svg" alt="Cá chép vàng">
-        <div class="distance"><span id="distanceText">Hành trình 0%</span></div>
-      </div>
-      <div class="question-card">
-        <div class="question-meta"><span class="pill" id="categoryPill">NHẬN BIẾT ÂM ĐẦU</span><span id="streak">🔥 Chuỗi đúng: 0</span></div>
-        <p class="instruction" id="instruction">Từ sau bắt đầu bằng chữ nào?</p>
-        <div class="target-word" id="targetWord">lá</div>
-        <div class="answer-grid" id="answerGrid">
-          <button class="answer-btn" data-answer="L">L <small>lờ</small></button>
-          <button class="answer-btn" data-answer="N">N <small>nờ</small></button>
-        </div>
-        <div class="feedback" id="feedback" aria-live="polite">Chọn đáp án để giúp cá chép bơi tiếp nhé!</div>
-        <div class="question-actions"><button class="btn btn-soft" id="nextQuestion" disabled>Tiếp tục →</button><button class="text-btn" id="hearWord">🔈 Nghe từ</button><button class="text-btn" id="recordWord" hidden>🎙️ Bắt đầu nghe</button></div>
-      </div>
-    </section>
-
-    <section class="lower-grid" id="features">
-      <article class="feature-card"><div class="feature-icon">📚</div><h3>350 mục luyện tập</h3><p>175 mục L và 175 mục N, từ đơn đến cụm từ quen thuộc.</p></article>
-      <article class="feature-card"><div class="feature-icon">🏯</div><h3>Khám phá di sản</h3><p>Đi qua Hoàng thành Thăng Long, Dinh Độc Lập và dòng sông Vũ Môn.</p></article>
-      <article class="feature-card"><div class="feature-icon">🌱</div><h3>Học mà không áp lực</h3><p>Khích lệ nhẹ nhàng, có thể nghe lại và thử lại khi cần.</p></article>
-    </section>
-
-    <section class="heritage">
-      <div class="section-heading"><span class="eyebrow">DẤU ẤN VIỆT NAM</span><h2>Mỗi chặng đường, một miền di sản</h2></div>
-      <div class="heritage-grid">
-        <article class="heritage-card citadel"><div class="heritage-label">CHẶNG 02</div><h3>Hoàng thành Thăng Long</h3><p>Khám phá dấu xưa kinh thành nghìn năm.</p></article>
-        <article class="heritage-card palace"><div class="heritage-label">CHẶNG 03</div><h3>Dinh Độc Lập</h3><p>Tìm hiểu một dấu mốc lịch sử Việt Nam.</p></article>
-      </div>
-      <p class="heritage-note">Hình minh họa cách điệu phục vụ trò chơi, không thay thế ảnh tư liệu hoặc mô hình kiến trúc chính xác.</p>
-    </section>
-
-    <section class="stats-panel">
-      <div><span class="eyebrow">GÓC LUYỆN TẬP</span><h2>Thành tích của bé</h2></div>
-      <div class="stats"><div><strong id="totalPlayed">0</strong><span>Lượt trả lời</span></div><div><strong id="totalCorrect">0</strong><span>Câu đúng</span></div><div><strong id="accuracy">0%</strong><span>Chính xác</span></div></div>
-      <button class="text-btn danger" id="resetStats">Xóa thành tích</button>
-    </section>
+    <section class="feature-strip" id="features"><article><span>01</span><b>350 MỤC LUYỆN TẬP</b><p>175 mục âm L và 175 mục âm N.</p></article><article><span>02</span><b>LUYỆN NÓI QUA MICRO</b><p>Thu âm trực tiếp, nhận dạng tiếng Việt qua máy chủ.</p></article><article><span>03</span><b>HÓA RỒNG VŨ MÔN</b><p>Tiến trình, phần thưởng và hiệu ứng chinh phục.</p></article></section>
+    <section class="heritage" id="heritage"><div class="section-title"><div class="eyebrow">DẤU ẤN NON SÔNG</div><h2>Hành trình qua miền di sản</h2><p>Mỗi chặng học là một lần khám phá lịch sử và vẻ đẹp Việt Nam.</p></div><div class="heritage-cards"><article class="heritage-card citadel"><span>CHẶNG 02</span><h3>Hoàng thành<br>Thăng Long</h3><p>Dấu xưa kinh thành nghìn năm văn hiến.</p></article><article class="heritage-card palace"><span>CHẶNG 03</span><h3>Dinh Độc Lập</h3><p>Một dấu mốc lịch sử của đất nước.</p></article><article class="heritage-card gate-card"><span>CHẶNG 04</span><h3>Cổng Vũ Môn</h3><p>Bền chí luyện rèn, cá chép hóa rồng.</p></article></div><p class="disclaimer">Hình ảnh di sản được minh họa cách điệu phục vụ trò chơi.</p></section>
+    <section class="stats-panel"><div><div class="eyebrow">GÓC LUYỆN TẬP</div><h2>Thành tích của bé</h2></div><div class="stats"><div><b id="totalPlayed">0</b><span>Lượt trả lời</span></div><div><b id="totalCorrect">0</b><span>Câu đúng</span></div><div><b id="accuracy">0%</b><span>Chính xác</span></div></div><button id="resetStats" class="reset-btn">Xóa thành tích</button></section>
   </main>
-
-  <footer><span>🐟</span> Cá Chép Vượt Vũ Môn <span>·</span> Học vui mỗi ngày, tự tin nói đúng.</footer>
-
-  <div class="modal-backdrop" id="resultModal" hidden>
-    <div class="result-modal" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
-      <div class="confetti">✦ ✧ ✦</div><img id="resultCreature" src="assets/dragon.svg" alt="Rồng vàng">
-      <h2 id="resultTitle">Cá chép hóa rồng!</h2><p id="resultText">Con đã hoàn thành thử thách thật tuyệt vời.</p>
-      <div class="result-score" id="resultScore">8/10 câu đúng</div>
-      <button class="btn btn-primary" id="playAgain">Chơi màn tiếp theo →</button>
-      <button class="text-btn" id="closeResult">Về trang đầu</button>
-    </div>
-  </div>
-  <script src="data.js"></script>
-  <script src="game.js"></script>
-</body>
-</html>
+  <footer><span class="footer-mark">龍</span><span>CÁ CHÉP VƯỢT VŨ MÔN · HỌC VUI MỖI NGÀY</span><span>✦</span></footer>
+  <div class="modal-backdrop" id="resultModal" hidden><div class="result-modal"><div class="result-overline">THỬ THÁCH HOÀN TẤT</div><img id="resultCreature" src="assets/dragon.svg" alt="Rồng vàng"><h2 id="resultTitle">Cá chép hóa rồng!</h2><p id="resultText">Con đã hoàn thành thử thách thật tuyệt vời.</p><div id="resultScore" class="result-score">8 / 10</div><button class="btn btn-gold" id="playAgain">CHƠI CHẶNG TIẾP THEO →</button><button class="back-btn" id="closeResult">Về trang chủ</button></div></div>
+  <script src="data.js"></script><script src="game.js"></script>
+</body></html>

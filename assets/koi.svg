@@ -1,11 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300">
-<defs><linearGradient id="gold" x2="0" y2="1"><stop stop-color="#fff2a1"/><stop offset=".48" stop-color="#f7b72f"/><stop offset="1" stop-color="#c76b17"/></linearGradient></defs>
-<path d="M115 150 C45 65 10 75 28 145 C-2 210 54 230 120 174 C205 260 365 220 405 150 C365 80 205 42 115 126Z" fill="url(#gold)" stroke="#9d581b" stroke-width="7"/>
-<path d="M150 126 Q230 20 290 92 Q245 135 150 144Z" fill="#f5cf55" stroke="#b77720" stroke-width="5"/>
-<path d="M160 180 Q240 275 300 205 Q240 175 160 164Z" fill="#f5cf55" stroke="#b77720" stroke-width="5"/>
-<path d="M390 148 Q455 85 495 105 Q470 150 500 194 Q445 215 390 158Z" fill="#efaa27" stroke="#9d581b" stroke-width="6"/>
-<path d="M95 144 Q150 105 220 132" fill="none" stroke="#fff1b0" stroke-width="12" opacity=".8"/>
-<circle cx="365" cy="132" r="9" fill="#202b34"/><circle cx="368" cy="129" r="3" fill="white"/>
-<path d="M395 165 Q420 175 438 163" fill="none" stroke="#8e4319" stroke-width="4"/>
-<g fill="none" stroke="#fff0a3" stroke-width="3" opacity=".7"><path d="M180 140 q20 -20 40 0"/><path d="M230 145 q20 -20 40 0"/><path d="M280 150 q20 -20 40 0"/></g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" role="img" aria-labelledby="t d"><title id="t">Cá chép vàng cam</title><desc id="d">Cá chép phong cách minh họa cao cấp với vảy ánh kim, vây dài và đuôi xòe.</desc><defs>
+ <linearGradient id="body" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff3c5"/><stop offset=".22" stop-color="#f9cf70"/><stop offset=".52" stop-color="#ee8d32"/><stop offset=".78" stop-color="#bd4d20"/><stop offset="1" stop-color="#6e2d1d"/></linearGradient>
+ <linearGradient id="gold" x1="0" y1="0" x2=".9" y2="1"><stop stop-color="#fff1a8"/><stop offset=".35" stop-color="#eeb14a"/><stop offset=".7" stop-color="#c66a25"/><stop offset="1" stop-color="#7f321b"/></linearGradient>
+ <linearGradient id="fin" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff1bf" stop-opacity=".95"/><stop offset=".45" stop-color="#ef9c42" stop-opacity=".8"/><stop offset="1" stop-color="#a83c24" stop-opacity=".5"/></linearGradient>
+ <radialGradient id="shine"><stop stop-color="#fffbdc" stop-opacity=".9"/><stop offset="1" stop-color="#fffbdc" stop-opacity="0"/></radialGradient>
+ <pattern id="scales" width="34" height="27" patternUnits="userSpaceOnUse"><path d="M0 13 Q17 -8 34 13 Q17 34 0 13Z" fill="none" stroke="#fff0b4" stroke-width="2" opacity=".72"/><path d="M4 13Q17 0 30 13" fill="none" stroke="#a84c22" stroke-width="1" opacity=".42"/></pattern>
+ <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="13"/></filter>
+ <clipPath id="bodyClip"><path d="M180 274 C250 165 430 144 598 210 C660 235 704 272 736 302 C680 338 623 374 551 395 C389 445 244 389 180 310 C163 297 163 287 180 274Z"/></clipPath>
+ </defs>
+ <ellipse cx="450" cy="440" rx="300" ry="40" fill="#031d2d" opacity=".3" filter="url(#shadow)"/>
+ <!-- flowing tail --> <path d="M630 295 C725 205 790 128 861 105 C837 194 824 251 775 303 C842 347 865 407 874 485 C791 450 714 388 632 335Z" fill="url(#fin)" stroke="#f8c76e" stroke-width="5"/><path d="M647 304Q780 185 850 125M650 315Q790 305 862 465M663 319Q750 270 817 220M665 328Q755 366 840 436" fill="none" stroke="#ffe6a1" stroke-width="4" opacity=".8"/>
+ <!-- dorsal fin --> <path d="M282 214 Q350 105 455 112 Q508 118 552 201 Q456 174 370 204Z" fill="url(#fin)" stroke="#e9aa50" stroke-width="4"/><path d="M318 194Q377 128 451 126M360 200Q414 147 485 139M409 193Q455 154 516 166" fill="none" stroke="#fff0bb" stroke-width="3" opacity=".75"/>
+ <!-- belly fin --> <path d="M370 374Q340 472 270 510Q288 425 335 367Z" fill="url(#fin)" stroke="#d98737" stroke-width="4"/><path d="M352 382Q318 446 286 490M360 386Q348 445 328 478" fill="none" stroke="#fff0b6" stroke-width="3"/>
+ <!-- pectoral fin --> <path d="M520 338Q590 397 590 493Q527 466 477 375Z" fill="url(#fin)" stroke="#d27b31" stroke-width="4"/><path d="M508 361Q547 421 571 473M525 355Q571 410 583 461M492 372Q518 427 540 467" fill="none" stroke="#ffe8ae" stroke-width="3"/>
+ <!-- body --> <path d="M180 274 C250 165 430 144 598 210 C660 235 704 272 736 302 C680 338 623 374 551 395 C389 445 244 389 180 310 C163 297 163 287 180 274Z" fill="url(#body)" stroke="#71341f" stroke-width="8"/>
+ <g clip-path="url(#bodyClip)"><path d="M180 260Q260 190 348 198Q410 208 438 268Q380 308 300 305Q230 303 180 332Z" fill="#fff4d0" opacity=".92"/><path d="M435 188Q526 174 618 226Q662 252 688 298Q615 300 562 276Q490 247 435 188Z" fill="#f6a53e" opacity=".88"/><path d="M250 334Q325 287 393 315Q440 336 473 405Q365 433 275 390Z" fill="#fff0c6" opacity=".82"/><rect x="180" y="170" width="560" height="270" fill="url(#scales)" opacity=".85"/><ellipse cx="390" cy="225" rx="190" ry="90" fill="url(#shine)"/></g>
+ <!-- gill and face --> <path d="M650 246Q612 296 650 352" fill="none" stroke="#9e4a25" stroke-width="7" opacity=".65"/><path d="M677 275Q696 300 677 327" fill="none" stroke="#fff0bd" stroke-width="3" opacity=".8"/>
+ <path d="M712 283Q751 278 767 300Q746 322 711 316" fill="#efad4e" stroke="#78351e" stroke-width="5"/><path d="M746 300Q774 287 790 300" fill="none" stroke="#71351f" stroke-width="5" stroke-linecap="round"/>
+ <!-- eye --> <circle cx="688" cy="269" r="15" fill="#fff4d4"/><circle cx="692" cy="269" r="9" fill="#182a2b"/><circle cx="695" cy="265" r="3" fill="#fff"/>
+ <!-- whiskers --> <path d="M724 280Q779 246 812 264M724 315Q783 350 818 334" fill="none" stroke="#f8d58c" stroke-width="5" stroke-linecap="round"/>
+ <!-- scales highlight --> <path d="M266 248Q354 177 452 199M300 363Q392 410 484 391" fill="none" stroke="#fff8d9" stroke-width="8" opacity=".36" stroke-linecap="round"/>
+ <!-- fins rays --> <path d="M300 215Q350 166 400 151M335 219Q397 170 452 151M375 220Q431 183 496 174" fill="none" stroke="#fff2c2" stroke-width="3" opacity=".8"/>
+ <g fill="#ffe7a4" opacity=".85"><circle cx="250" cy="205" r="4"/><circle cx="455" cy="112" r="5"/><circle cx="833" cy="116" r="4"/><circle cx="866" cy="477" r="5"/></g>
 </svg>

@@ -1,0 +1,13 @@
+{
+  "name": "ca-chep-vuot-vu-mon-v2",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Game luyện phân biệt âm đầu L/N cho trẻ em, có nhận dạng giọng nói qua máy chủ.",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "dependencies": {
+    "formidable": "^3.5.4",
+    "openai": "^6.15.0"
+  }
+}

@@ -1,8 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300">
-<defs><linearGradient id="d" x2="0" y2="1"><stop stop-color="#fff2a0"/><stop offset="1" stop-color="#d98216"/></linearGradient></defs>
-<path d="M65 175 Q130 60 235 135 Q320 195 420 95 Q470 45 450 115 Q430 175 350 195 Q250 245 170 180 Q105 145 65 175Z" fill="none" stroke="url(#d)" stroke-width="34" stroke-linecap="round"/>
-<path d="M385 100 Q405 35 450 55 L475 20 L485 95 Q525 105 500 150 L455 165 L420 145Z" fill="url(#d)" stroke="#9a5317" stroke-width="6"/>
-<path d="M450 62 L435 15 L475 42 M480 65 L515 30 L502 82" fill="#e8a52b" stroke="#9a5317" stroke-width="6"/>
-<circle cx="475" cy="105" r="7" fill="#202b34"/>
-<path d="M130 120 Q80 30 25 65 Q70 110 70 155 M230 145 Q205 55 155 60 Q195 110 190 165" fill="#f5c64b" stroke="#9a5317" stroke-width="6"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" role="img" aria-labelledby="t"><title id="t">Rồng vàng hóa thân từ cá chép</title><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff1a8"/><stop offset=".35" stop-color="#f5bd4e"/><stop offset=".7" stop-color="#d47b25"/><stop offset="1" stop-color="#77351f"/></linearGradient><linearGradient id="f" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff3bd"/><stop offset="1" stop-color="#d56e2b"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="9"/></filter></defs><ellipse cx="300" cy="352" rx="220" ry="24" fill="#f2b84d" opacity=".2" filter="url(#glow)"/>
+<!-- cloud flames --> <path d="M85 290Q22 241 82 203Q35 150 104 136Q85 75 159 95Q185 30 233 89Q286 34 313 101Q374 62 388 130Q462 102 473 169Q550 187 502 245Q462 276 408 245Q341 311 252 268Q165 331 85 290Z" fill="url(#f)" opacity=".34"/>
+<!-- tail --> <path d="M170 244Q89 190 48 115Q132 133 196 198Q144 106 158 48Q224 116 236 202" fill="url(#f)" stroke="#a95b24" stroke-width="6"/>
+<!-- coiled body --> <path d="M182 265Q236 342 350 300Q445 266 399 195Q368 144 302 173Q257 193 282 235Q302 264 342 242" fill="none" stroke="#8b421f" stroke-width="61" stroke-linecap="round"/><path d="M182 257Q236 334 350 292Q438 258 392 193Q361 149 306 180Q267 201 287 235Q307 259 342 236" fill="none" stroke="url(#g)" stroke-width="48" stroke-linecap="round"/>
+<!-- belly plates --> <path d="M201 278Q240 317 283 316M232 293l-8 20m33-14-5 20m32-18-1 20m31-28 5 18" stroke="#fff0b1" stroke-width="5" fill="none" opacity=".9"/>
+<!-- neck and head --> <path d="M370 205Q400 146 449 132Q476 123 497 143Q522 164 500 187Q482 205 450 193Q430 218 405 235" fill="url(#g)" stroke="#8e451f" stroke-width="7"/>
+<!-- horns --> <path d="M453 137Q434 83 398 66Q421 118 420 148M475 137Q493 83 532 73Q507 118 506 151" fill="url(#f)" stroke="#9a4c22" stroke-width="6"/>
+<!-- mane --> <path d="M405 164Q360 128 349 88Q402 104 430 139Q439 99 475 76Q470 124 461 150Q506 120 539 130Q514 167 493 179" fill="url(#f)" stroke="#9b4a22" stroke-width="5"/>
+<!-- snout --> <path d="M477 157Q531 139 558 169Q571 190 541 203Q512 211 487 188Z" fill="url(#g)" stroke="#85401e" stroke-width="6"/><circle cx="513" cy="165" r="7" fill="#fff4d1"/><circle cx="515" cy="165" r="4" fill="#192c32"/><path d="M530 192Q550 187 561 195" fill="none" stroke="#71351d" stroke-width="5" stroke-linecap="round"/>
+<!-- whiskers --> <path d="M526 196Q580 226 570 267Q543 240 516 225M489 198Q505 249 481 273" fill="none" stroke="#f9d77e" stroke-width="6" stroke-linecap="round"/>
+<!-- scales --> <g fill="none" stroke="#fff0ac" stroke-width="3" opacity=".75"><path d="M227 258q12-18 24 0q-12 18-24 0m30 17q12-18 24 0q-12 18-24 0m31 12q12-18 24 0q-12 18-24 0m33-15q12-18 24 0q-12 18-24 0m-87-42q12-18 24 0q-12 18-24 0m36 4q12-18 24 0q-12 18-24 0"/></g>
+<!-- sparks --> <g fill="#ffe9a7"><path d="M95 53l6 17 17 6-17 6-6 17-6-17-17-6 17-6z"/><path d="M544 48l4 12 12 4-12 4-4 12-4-12-12-4 12-4z"/><circle cx="92" cy="328" r="5"/><circle cx="535" cy="320" r="4"/></g></svg>
