@@ -1,103 +1,93 @@
-# Cá Chép Vượt Vũ Môn V2 — 3D Game Style
+# Cá Chép Vượt Vũ Môn V3 — Đọc to để sửa ngọng L/N
 
-Ứng dụng web tiếng Việt giúp người dùng ở nhiều độ tuổi luyện phân biệt âm đầu **L / N**. Responsive cho iPhone, iPad và máy tính; có 350 mục luyện tập, chế độ chọn chữ và chế độ thu âm gửi tới API serverless để nhận dạng tiếng Việt.
+Game web cho mọi lứa tuổi. Người chơi **đọc to** từ trên cổng. Đọc đúng thì cá chép 3D nhảy qua cổng. Đọc lẫn **L ↔ N** thì game chỉ đúng âm tiết bị sai, cho nghe mẫu, có hình vị trí lưỡi và mẹo tự kiểm tra, rồi yêu cầu đọc lại ngay.
 
-## Điểm nổi bật V2 3D
+## Có gì mới so với V2
 
-- Giao diện game mobile theo tông xanh ngọc – vàng kim.
-- Cá chép vàng cam SVG có vảy ánh kim, vây/đuôi chi tiết; kết hợp phối cảnh CSS, bóng đổ nhiều lớp và chuyển động bơi để tạo cảm giác 3D.
-- Rồng vàng khi hoàn thành thử thách; hiệu ứng ánh sáng, chiều sâu và chuyển động.
-- Cảnh sông, thác, cổng Vũ Môn; giao diện thích ứng màn hình iPhone.
-- 350 mục luyện tập (175 mục L, 175 mục N), thống kê lưu trên thiết bị.
-- Micro dùng `getUserMedia` + `MediaRecorder`, không phụ thuộc `SpeechRecognition` của Safari.
-- Bản ghi được gửi đến `/api/transcribe`; API gọi OpenAI Audio Transcriptions với model `gpt-transcribe` và gợi ý ngôn ngữ Việt.
-- API key chỉ nằm trong biến môi trường Vercel `OPENAI_API_KEY`, không nằm trong JavaScript trình duyệt.
-- Có nút chọn L/N dự phòng khi micro, mạng hoặc dịch vụ nhận dạng không sẵn sàng.
+| | V2 | V3 |
+|---|---|---|
+| Cá chép | Ảnh SVG giả 3D | **Mô hình 3D WebGL thật**: thân lưng gù, 2 đôi râu, vây lưng dài, đuôi chẻ, vảy xếp lớp, đường bên, nắp mang; thân uốn sóng khi bơi |
+| Cách chơi | Bấm giữ micro → gửi máy chủ → chờ | **Micro mở liên tục**: cứ đọc là cá hành động, không phải bấm nút |
+| Chấm lỗi | So cả từ | **So từng âm tiết**, biết chính xác “L→N” hay “N→L” ở chữ nào |
+| Sửa lỗi | Báo sai | Thẻ sửa lỗi: so sánh nghe được/cần đọc, hình lưỡi, mẹo bịt mũi/chạm mũi, đọc mẫu chậm, đọc lại tối đa 3 lần |
+| Kho từ | 350 mục | **1.393 mục**: 500 từ đơn, 600 từ đôi (từ ghép 2 âm tiết), 116 cặp từ tối thiểu L–N, 61 câu/ca dao |
+| Lứa tuổi | Một chế độ | Bé 4–6 (đọc mẫu trước, chữ to, nhiều thời gian), Học sinh, Người lớn, Cao tuổi |
+| Nền | Hình vẽ | **Ảnh thật** Hoàng thành Thăng Long (Đoan Môn) & Dinh Độc Lập, có bóng phản chiếu trên sông |
+| Ôn tập | — | Lưu “từ hay sai”, tự lặp lại sau 3 cổng, chế độ “Ôn từ hay sai” |
 
-> Ghi chú đồ họa: đây là phong cách **3D-look** dựng bằng SVG nhiều lớp, gradient, CSS perspective và animation; không phải mô hình 3D realtime/WebGL. Muốn cá xoay tự do trong không gian 3D như game Unity/Three.js thì cần thêm mô hình 3D GLB và engine 3D.
+## Cách chơi
 
-## Cấu trúc
+1. Chọn người chơi, nội dung, cảnh nền → **Bắt đầu**. Cho phép trình duyệt dùng micro.
+2. Cổng trôi về phía cá. Đọc to từ trên cổng trước khi cổng chạm cá.
+3. Đọc đúng: cá nhảy qua cổng, được cộng điểm và chuỗi.
+4. Đọc lẫn L/N: hiện thẻ sửa lỗi, nghe mẫu rồi đọc lại.
+5. Cổng cuối là **Vũ Môn**: đọc trọn câu để cá hoá rồng.
 
-```text
-ca-chep-vuot-vu-mon-v2-3d/
-├── api/
-│   └── transcribe.js
-├── assets/
-│   ├── koi.svg
-│   ├── dragon.svg
-│   └── vietnam-scenes.svg
-├── index.html
-├── style.css
-├── game.js
-├── data.js
-├── package.json
-├── vercel.json
-├── .env.example
-└── HUONG-DAN-CAP-NHAT-IPHONE.md
+Không có micro thì chọn **“Nghe & chọn L/N”**: máy đọc từ, người chơi chọn âm đầu.
+
+## Trình duyệt
+
+- **Chrome / Edge (máy tính, Android)**: nghe liên tục tốt nhất. Cần Internet vì phần nhận dạng giọng nói chạy trên máy chủ của trình duyệt.
+- **Safari iPhone/iPad/Mac**: dùng được. Cần bật Siri & Đọc chính tả (Cài đặt → Siri). Micro có thể tự ngắt rồi bật lại giữa các câu.
+- **Firefox**: không có nhận dạng sẵn → nút micro thành “giữ để nói”. Bản ghi được gửi tới `api/transcribe` (cần `OPENAI_API_KEY` trên Vercel như bản V2).
+- Micro chỉ chạy trên **https://** hoặc `localhost`. Mở file `index.html` trực tiếp sẽ không có micro.
+
+## Ảnh nền
+
+Game tải ảnh thật từ Wikimedia Commons (giấy phép CC BY-SA, ghi nguồn ở góc ảnh):
+
+- Hoàng thành Thăng Long – cổng Đoan Môn: `File:Thang_Long_Citadel.jpg`
+- Dinh Độc Lập: `File:Independence_Palace_or_Reunification_Palace_(12110625233).jpg` – tác giả Clay Gilliland, CC BY-SA 2.0
+
+Muốn dùng ảnh riêng (chạy không cần mạng, hoặc ảnh đẹp hơn), chép vào `assets/` đúng tên:
+
+```
+assets/hoang-thanh-thang-long.jpg
+assets/dinh-doc-lap.jpg
 ```
 
-## Deploy trên Vercel
+Game ưu tiên ảnh trong `assets/` trước. Cũng có thể chọn ảnh từ máy ngay trên màn hình chính (mục “Mẹo phát âm · Ảnh nền riêng”). Ảnh chọn kiểu này chỉ dùng cho lần chơi đó.
 
-### 1. Đưa mã nguồn lên GitHub
+## Deploy lên Vercel (cập nhật repo cũ)
 
-Cập nhật repository hiện tại đang kết nối với Vercel bằng toàn bộ nội dung thư mục này. Giữ nguyên cấu trúc, đặc biệt `api/transcribe.js` và `assets/`. Không upload file `.env` hoặc `node_modules`.
+Cập nhật repository GitHub đang nối với Vercel:
 
-### 2. Cấu hình Vercel
+1. **Xoá** các file cũ ở thư mục gốc: `game.js`, `data.js` (bản V3 chuyển chúng vào thư mục `js/`). Có thể xoá `assets/koi.svg`, `assets/vietnam-scenes.svg`.
+2. Upload toàn bộ nội dung thư mục này, giữ nguyên cấu trúc:
 
-- Framework Preset: `Other`.
-- Root Directory: thư mục chứa `index.html` và `package.json` (thông thường `./`).
-- Build Command: để trống.
-- Output Directory: `.`.
-- Install Command: để Vercel tự cài dependency từ `package.json`.
-- Node.js: 22.x trở lên.
-
-### 3. Thêm OpenAI API key
-
-1. Tạo key tại https://platform.openai.com/api-keys.
-2. Vercel → Project → Settings → Environment Variables.
-3. Thêm `OPENAI_API_KEY` với giá trị API key, chọn Production (và Preview nếu cần).
-4. Save, sau đó deploy lại để deployment mới nhận biến môi trường.
-
-Không đưa API key vào `game.js`, `index.html`, GitHub hoặc tin nhắn. API usage tính phí riêng; gói ChatGPT không bao gồm tự động chi phí API. Kiểm tra billing và usage limits trước khi chia sẻ rộng.
-
-### 4. Deploy
-
-Commit mã nguồn trên GitHub. Vercel sẽ tự tạo deployment. Mở Vercel → Deployments, đợi trạng thái `Ready`, rồi nhấn `Visit`.
-
-## Kiểm tra trên iPhone
-
-1. Mở URL HTTPS Vercel bằng Safari.
-2. Nhấn **Luyện nói với micro**.
-3. Cho phép Safari truy cập micro.
-4. Nhấn giữ nút micro trong khi đọc từ mục tiêu; thả tay để kết thúc ghi âm và gửi bản ghi nhận dạng.
-5. Chờ transcript hiện ra. Nếu chưa rõ, thử lại hoặc chọn L/N thủ công.
-
-## Chạy thử
-
-Yêu cầu Node.js 22+.
-
-```bash
-npm install
-npm install -g vercel
+```
+index.html  style.css  package.json  vercel.json  README.md  .env.example
+js/data.js  js/speech.js  js/carp3d.js  js/game.js
+assets/dragon.svg
+api/transcribe.js
 ```
 
-Tạo `.env.local` từ `.env.example`, điền API key thử nghiệm vào `.env.local` (không commit tệp này), sau đó:
+3. Commit. Vercel sẽ tự deploy.
+4. `OPENAI_API_KEY` chỉ cần cho Firefox (chế độ giữ để nói). Model mặc định là `gpt-4o-transcribe`. Đổi bằng biến `OPENAI_TRANSCRIBE_MODEL` nếu cần.
 
-```bash
-vercel dev
-```
+Game là trang tĩnh, nên cũng chạy được trên Netlify / GitHub Pages. Riêng chế độ giữ để nói trên Firefox thì cần hàm `api/transcribe` của Vercel.
 
-## Quyền riêng tư và giới hạn
+## Kiểm soát chất lượng kho từ
 
-- Micro chỉ ghi âm sau thao tác nhấn nút và quyền truy cập của người dùng.
-- Âm thanh được gửi tới dịch vụ nhận dạng để xử lý; ứng dụng không lưu bản ghi âm lâu dài. Hãy thông báo rõ việc xử lý âm thanh cho người sử dụng và chỉ bật micro khi đã có sự đồng ý của người nói.
-- API giới hạn tệp ghi âm 4 MB và có throttling cơ bản theo IP. Với triển khai công khai có nhiều người dùng, nên bổ sung rate-limit bền vững (Redis/KV), xác thực/chống lạm dụng và chính sách quyền riêng tư phù hợp.
-- Nhận dạng transcript không phải đánh giá chuyên môn phát âm. Mô hình có thể nhầm L/N, đặc biệt khi người nói phát âm chưa rõ, nói nhỏ hoặc môi trường có tiếng ồn. Không dùng kết quả này để chẩn đoán phát âm.
-- Hình di sản là minh họa cách điệu, không phải ảnh tư liệu.
+- Mọi âm tiết đã được đối chiếu tự động với bộ từ điển *Vietnamese wordlist* (Hồ Ngọc Đức, khoảng 74.000 mục). Không có âm tiết nào nằm ngoài từ điển.
+- Ưu tiên từ thông dụng: lấy trước từ thuộc nhóm 11.000 và 22.000 từ phổ biến nhất.
+- Dấu thanh thống nhất theo kiểu mới: hòa, lòe, lụy. Bộ chấm cũng hiểu kiểu cũ (hoà, loè).
+- Đã loại bỏ từ thô tục, có nghĩa tình dục, bạo lực, chê bai ngoại hình, xúc phạm, nhạy cảm chính trị, tên riêng và từ quá hiếm.
+- Cặp từ tối thiểu (lo/no, lên/nên, cá lóc/cá nóc, trở lên/trở nên…) được tìm tự động: chỉ giữ cặp mà cả hai vế đều có trong từ điển.
 
+## Thêm từ vào kho
 
-## Bản vá nhận dạng tiếng Việt 2.1.1
+Mở `js/data.js`, thêm vào danh sách tương ứng (ngăn cách bằng `|`):
 
-- Đã sửa tham số ngôn ngữ gửi tới OpenAI Audio Transcriptions thành `language: 'vi'`.
-- Giao diện hiển thị thông báo HTTP/API cụ thể hơn thay vì chỉ báo lỗi kết nối chung.
-- Sau khi cập nhật, commit thay đổi để Vercel tự triển khai lại. Kiểm tra `api/transcribe.js` có trong repository và biến môi trường `OPENAI_API_KEY` được bật cho Production.
+- `TU` – từ đơn
+- `DOI` – từ đôi (từ ghép 2 âm tiết)
+- `CAP` – cặp `['từ L','từ N']` (cả hai đều phải có nghĩa)
+- `CAU` – câu
+
+Trùng lặp được tự động loại bỏ.
+
+## Giới hạn cần biết
+
+- Máy nhận dạng giọng nói có xu hướng “đoán” ra từ có nghĩa. Ví dụ người đọc “nàm” có thể vẫn bị ghi thành “làm”. Vì vậy **cặp từ đôi** (lo/no, nắng/lắng…) là phần phát hiện lỗi tin cậy nhất: cả hai từ đều có nghĩa nên máy phải chọn theo âm thật.
+- Kết quả là công cụ luyện tập, không thay cho đánh giá của chuyên gia âm ngữ trị liệu.
+- Âm thanh micro được trình duyệt gửi tới dịch vụ nhận dạng của Google (Chrome/Edge) hoặc Apple (Safari). Hãy thông báo cho người chơi, nhất là trẻ em và phụ huynh.

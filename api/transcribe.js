@@ -48,7 +48,7 @@ module.exports = async function handler(req, res) {
     try {
       const transcript = await client.audio.transcriptions.create({
         file: fs.createReadStream(audio.filepath),
-        model: 'gpt-transcribe',
+        model: process.env.OPENAI_TRANSCRIBE_MODEL || 'gpt-4o-transcribe',
         language: 'vi',
         prompt: 'Đây là bản ghi tiếng Việt phổ thông. Người nói đọc một từ hoặc cụm từ ngắn trong bài luyện phân biệt âm đầu L và N. Hãy chép lại chính xác những gì nghe được, không tự sửa, không thêm từ.'
       });
