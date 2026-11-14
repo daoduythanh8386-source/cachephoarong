@@ -32,7 +32,17 @@ Không có micro thì chọn **“Nghe & chọn L/N”**: máy đọc từ, ngư
 - **Firefox**: không có nhận dạng sẵn → nút micro thành “giữ để nói”. Bản ghi được gửi tới `api/transcribe` (cần `OPENAI_API_KEY` trên Vercel như bản V2).
 - Micro chỉ chạy trên **https://** hoặc `localhost`. Mở file `index.html` trực tiếp sẽ không có micro.
 
-## Ảnh nền
+## Ảnh nền: 100 danh lam thắng cảnh
+
+Mỗi câu (mỗi cổng) đổi sang một cảnh mới. Có 100 ảnh chụp thật, độ phân giải cao, lấy từ Wikimedia Commons, ghi tên tác giả và giấy phép ở góc ảnh. Gồm 13 cảnh Việt Nam và 87 cảnh thế giới ở châu Á, châu Âu, châu Mỹ, châu Phi và châu Đại Dương.
+
+- Ảnh khung dọc (52 ảnh) dùng bản rộng 1280px. Ảnh khung ngang dùng bản 1920px và được cắt thành khung dọc 9:16 vừa màn hình điện thoại. Màu ảnh được tăng độ tươi nhẹ.
+- Trong lúc người chơi đọc câu hiện tại, game tải trước ảnh của câu kế tiếp, nên chuyển cảnh không bị chớp trắng.
+- Màn hình chính có 4 chế độ cảnh nền: **100 danh thắng** (xáo trộn), **Việt Nam**, **Thăng Long**, **Độc Lập**.
+- Trang `xem-canh.html` cho xem cả 100 ảnh ở khung dọc. Chạm vào ảnh để xem toàn màn hình.
+- Danh sách cảnh nằm trong `js/scenes.js`. Xoá một dòng để bỏ cảnh đó. Muốn thêm ảnh riêng, đặt ảnh vào `assets/` rồi thêm dòng dạng `["Tên", "Nơi", "local:assets/ten-anh.jpg", 1080, 1920, "", "Tên bạn"]`.
+
+### Ảnh nền cũ (vẫn dùng được)
 
 Game tải ảnh thật từ Wikimedia Commons (giấy phép CC BY-SA, ghi nguồn ở góc ảnh):
 

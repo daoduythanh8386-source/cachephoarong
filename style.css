@@ -11,13 +11,13 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 
 /* ---------- cảnh ---------- */
 #scene{position:absolute;inset:0}
-.bg{position:absolute;inset:0 0 34% 0;background-size:cover;background-position:center 45%;opacity:0;transition:opacity 1.4s ease;transform:scale(1.08);animation:ken 38s ease-in-out infinite alternate}
+.bg{position:absolute;inset:0;background-size:cover;background-position:center 40%;opacity:0;transition:opacity 1.2s ease;transform:scale(1.06);animation:ken 26s ease-in-out infinite alternate;filter:saturate(1.28) contrast(1.07) brightness(1.04)}
 .bg.on{opacity:1}
-@keyframes ken{from{transform:scale(1.08) translateX(0)}to{transform:scale(1.16) translateX(-2.5%)}}
+@keyframes ken{from{transform:scale(1.06) translate(0,0)}to{transform:scale(1.16) translate(-2%,-1.5%)}}
 .bg.fallback{background:linear-gradient(#f7c98a,#e08a54 45%,#6b3b4a)}
-.sky-shade{position:absolute;inset:0 0 34% 0;background:linear-gradient(180deg,rgba(4,18,28,.55),rgba(4,18,28,0) 28%,rgba(4,18,28,0) 70%,rgba(8,38,58,.55))}
-.river{position:absolute;left:0;right:0;bottom:0;height:34%;overflow:hidden;background:linear-gradient(180deg,#3d8fa8 0%,#1d6a86 30%,#0d3f5c 75%,#072a3e)}
-.reflect{position:absolute;inset:0;background-size:cover;background-position:center 45%;transform:scaleY(-1);opacity:.32;filter:blur(3px) saturate(1.2);mix-blend-mode:screen}
+.sky-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,18,28,.5),rgba(4,18,28,0) 22%,rgba(4,18,28,0) 55%,rgba(4,18,28,.15) 66%)}
+.river{position:absolute;left:0;right:0;bottom:0;height:34%;overflow:hidden;background:linear-gradient(180deg,rgba(61,160,180,.35) 0%,rgba(29,106,134,.62) 30%,rgba(13,63,92,.85) 75%,#072a3e);-webkit-mask-image:linear-gradient(transparent,#000 14%);mask-image:linear-gradient(transparent,#000 14%)}
+.reflect{position:absolute;inset:0;background-size:cover;background-position:center 40%;transform:scaleY(-1);opacity:.28;filter:blur(3px) saturate(1.3);mix-blend-mode:screen}
 .waves{position:absolute;left:-50%;width:200%;height:100%;top:0;opacity:.45;
   background:repeating-linear-gradient(176deg,transparent 0 14px,rgba(255,255,255,.18) 15px 16px,transparent 17px 30px);animation:flow 7s linear infinite}
 .waves.w2{opacity:.25;animation-duration:11s;background:repeating-linear-gradient(183deg,transparent 0 22px,rgba(190,240,255,.25) 23px 24px,transparent 25px 44px)}
@@ -188,3 +188,7 @@ h1{font-size:clamp(24px,6vw,34px)}
 .inapp-link{display:flex;gap:6px;margin-top:8px}
 .inapp-link input{flex:1;min-width:0;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.08);color:#fff;font:inherit;font-size:13px}
 #inapp{z-index:30}
+
+.place.show{animation:placeIn 3.2s ease forwards}
+@keyframes placeIn{0%{opacity:0;transform:translateY(-8px)}12%{opacity:1;transform:none}80%{opacity:1}100%{opacity:.75}}
+.more summary a{color:#9fe3ff}

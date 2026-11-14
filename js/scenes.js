@@ -1,0 +1,127 @@
+/* =====================================================================
+   100 DANH LAM THẮNG CẢNH — ảnh thật, độ phân giải cao, từ Wikimedia Commons
+   Mỗi mục: [tên, nơi chốn, đường dẫn Commons, rộng, cao, giấy phép, tác giả]
+   - Ảnh dọc (52 ảnh) lấy bản rộng 1280px; ảnh ngang lấy bản 1920px rồi cắt
+     khung dọc 9:16 vừa màn hình điện thoại.
+   - Muốn bỏ một cảnh: xoá dòng tương ứng. Muốn dùng ảnh riêng: thêm dòng
+     dạng ["Tên", "Nơi", "local:assets/ten-anh.jpg", 1080, 1920, "", "Tên bạn"].
+   ===================================================================== */
+(function () {
+  const RAW = [
+  ["Hoàng thành Thăng Long", "Hà Nội, Việt Nam", "e/eb/Hanoi_Vietnam_%C4%90oan-m%C3%B4n-01.jpg", 3788, 2525, "CC BY-SA 3.0", "CEphoto, Uwe Aranas"],
+  ["Dinh Độc Lập", "TP. Hồ Chí Minh, Việt Nam", "7/7d/20190923_Independence_Palace-10.jpg", 5619, 3746, "CC0", "Balon Greyjoy"],
+  ["Vịnh Hạ Long", "Quảng Ninh, Việt Nam", "7/79/Ha_Long_Bay_in_2019.jpg", 3251, 2280, "CC BY-SA 4.0", "Taewangkorea"],
+  ["Phố cổ Hội An", "Quảng Nam, Việt Nam", "9/91/H%E1%BB%99i_An,_Ancient_Town,_2020-01_CN-04.jpg", 3039, 4101, "CC BY-SA 4.0", "Steffen Schmitz"],
+  ["Văn Miếu – Quốc Tử Giám", "Hà Nội, Việt Nam", "7/75/Constellation_of_Literature_pavilion,_Temple_of_Literature,_Hanoi,_Vietnam,_20240123_0939_3103.jpg", 2880, 4314, "CC BY 4.0", "Jakub Hałun"],
+  ["Chùa Một Cột", "Hà Nội, Việt Nam", "7/70/One_Pillar_Pagoda,_Hanoi,_Vietnam,_20240123_1122_3219.jpg", 3212, 4812, "CC BY 4.0", "Jakub Hałun"],
+  ["Cầu Vàng – Bà Nà", "Đà Nẵng, Việt Nam", "0/0c/Golden_Bridge_at_Ba_Na_Hills_20250718.jpg", 4096, 2649, "CC0", "DvTor8303"],
+  ["Quần thể danh thắng Tràng An", "Ninh Bình, Việt Nam", "0/0b/Trang_An_Landscape_Complex,_Ninh_Binh_Province,_Vietnam,_20240202_1456_5313.jpg", 5275, 3521, "CC BY 4.0", "Jakub Hałun"],
+  ["Phong Nha – Kẻ Bàng", "Quảng Bình, Việt Nam", "c/c9/Phongnhakebang6.jpg", 3072, 2304, "Public domain", "Genghiskhanviet"],
+  ["Kinh thành Huế", "Huế, Việt Nam", "b/be/Hue_Vietnam_Citadel-of-Hu%E1%BA%BF-12.jpg", 2478, 3716, "CC BY-SA 3.0", "CEphoto, Uwe Aranas"],
+  ["Hồ Gươm", "Hà Nội, Việt Nam", "7/70/Hanoi_Vietnam_Shrine-at-Ho%C3%A0n-Ki%E1%BA%BFm-Lake-01.jpg", 2563, 3844, "CC BY-SA 3.0", "CEphoto, Uwe Aranas"],
+  ["Thánh địa Mỹ Sơn", "Quảng Nam, Việt Nam", "8/89/M%E1%BB%B9_S%C6%A1n_sanctuary_group_A.jpg", 8256, 4651, "CC BY 3.0", "Tycho (shansov.net)"],
+  ["Nhà thờ Đức Bà Sài Gòn", "TP. Hồ Chí Minh, Việt Nam", "f/f5/Ho_Chi_MInh_CIty_-_Notre-Dame_Cathedral_Basilica_of_Saigon.jpg", 2848, 4288, "CC BY 4.0", "P. Hughes"],
+  ["Vạn Lý Trường Thành", "Trung Quốc", "c/c4/Badaling_China_Great-Wall-of-China-04.jpg", 2457, 3071, "CC BY-SA 3.0", "CEphoto, Uwe Aranas"],
+  ["Tử Cấm Thành", "Bắc Kinh, Trung Quốc", "2/2a/Beijing_China_Forbidden-City-05.jpg", 2848, 4272, "CC BY-SA 3.0", "CEphoto, Uwe Aranas"],
+  ["Đền Taj Mahal", "Agra, Ấn Độ", "4/43/20191204_Taj_Mahal_Agra_0657_6563_DxO.jpg", 3253, 4893, "CC BY-SA 4.0", "Jakub Hałun"],
+  ["Đền Angkor Wat", "Siem Reap, Campuchia", "4/41/Angkor_Wat.jpg", 2004, 1362, "CC BY-SA 4.0", "Bjørn Christian Tørrissen"],
+  ["Núi Phú Sĩ", "Nhật Bản", "f/f8/View_of_Mount_Fuji_from_%C5%8Cwakudani_20211202.jpg", 4231, 2068, "CC BY-SA 4.0", "Suicasmo"],
+  ["Đền Fushimi Inari", "Kyoto, Nhật Bản", "0/0e/Torii_path_with_lantern_at_Fushimi_Inari_Taisha_Shrine,_Kyoto,_Japan.jpg", 5765, 3843, "CC BY-SA 4.0", "Basile Morin"],
+  ["Chùa Vàng Kinkaku-ji", "Kyoto, Nhật Bản", "0/0f/Golden_Pavilion_Kinkaku-ji_water_mirror_2024.jpg", 4000, 6000, "CC BY-SA 4.0", "Nacaru"],
+  ["Thành cổ Petra", "Jordan", "e/e8/Al_Deir_Petra.JPG", 6000, 4000, "CC BY-SA 3.0", "Azurfrog"],
+  ["Tháp Burj Khalifa", "Dubai, UAE", "9/90/Burj_Khalifa_(worlds_tallest_building)_and_the_Dubai_skyline_(25781049892).jpg", 5496, 3670, "CC BY 2.0", "imran shahabuddin"],
+  ["Marina Bay Sands", "Singapore", "e/ea/Hotel_Marina_Bay_Sands_y_museo_ArtScience,_Marina_Bay,_Singapur,_2023-08-16,_DD_141-143_HDR.jpg", 5370, 8055, "CC BY-SA 4.0", "Diego Delso"],
+  ["Tháp đôi Petronas", "Kuala Lumpur, Malaysia", "e/e0/Petronas_Twin_Towers_(230715-1406).jpg", 3000, 4000, "CC BY-SA 4.0", "Wee Hong"],
+  ["Đền Borobudur", "Java, Indonesia", "2/25/Pradaksina.jpg", 5846, 3897, "CC BY-SA 4.0", "Heri nugroho"],
+  ["Chùa Shwedagon", "Yangon, Myanmar", "a/a6/20160813_Shwedagon_Pagoda_Yangon_9943_DxO.jpg", 3117, 4710, "CC BY-SA 4.0", "Jakub Hałun"],
+  ["Cố đô Bagan", "Myanmar", "8/89/20160801_Bagan_Myanmar_6751.jpg", 3075, 4642, "CC BY-SA 4.0", "Jakub Hałun"],
+  ["Cung điện Potala", "Lhasa, Tây Tạng", "b/b6/Potala_Palace_HQ.jpg", 1920, 1080, "CC BY-SA 4.0", "Lhasa Government"],
+  ["Trương Gia Giới", "Hồ Nam, Trung Quốc", "9/99/Zhangjiajie_Park_II_(30297345605).jpg", 2868, 4310, "CC BY-SA 2.0", "Ludger Heide"],
+  ["Sông Ly – Quế Lâm", "Quảng Tây, Trung Quốc", "9/92/1_li_jiang_guilin_yangshuo_2011.jpg", 3983, 2640, "CC BY-SA 4.0", "chensiyuan"],
+  ["Cung Gyeongbok", "Seoul, Hàn Quốc", "a/ab/Water_reflection_of_Hyangwonjeong_Pavilion_at_Gyeongbokgung_Palace_in_Seoul.jpg", 3851, 5777, "CC BY-SA 4.0", "Basile Morin"],
+  ["Tháp Taipei 101", "Đài Bắc", "f/fb/Taipei_Taiwan_Taipei-101-Tower-02.jpg", 3657, 5486, "CC BY-SA 3.0", "CEphoto, Uwe Aranas"],
+  ["Thánh đường Hagia Sophia", "Istanbul, Thổ Nhĩ Kỳ", "2/22/Hagia_Sophia_Mars_2013.jpg", 5514, 3681, "CC BY-SA 3.0", "Arild Vågen"],
+  ["Cappadocia", "Thổ Nhĩ Kỳ", "5/59/Cappadocia_balloon_trip,_Ortahisar_Castle_(11893715185).jpg", 5184, 3456, "CC BY 2.0", "Arian Zwegers"],
+  ["Thánh đường Sheikh Zayed", "Abu Dhabi, UAE", "e/e9/Sheikh_Zayed_Grand_Mosque_%40_Abu_Dhabi_(15424395673).jpg", 2976, 3968, "CC BY 2.0", "Guilhem Vellut"],
+  ["Đỉnh Everest", "Nepal – Trung Quốc", "1/15/Mt._Everest_from_Gokyo_Ri_November_5,_2012.jpg", 3157, 2104, "CC BY-SA 3.0", "Rdevany"],
+  ["Chùa Bình Minh Wat Arun", "Bangkok, Thái Lan", "0/0d/20160727_Bangkok_Wat_Arun_5513.jpg", 3116, 4705, "CC BY-SA 4.0", "Jakub Hałun"],
+  ["Chùa Phật Ngọc – Hoàng cung", "Bangkok, Thái Lan", "2/2c/The_Three_Chedis,_Wat_Phra_Kaew.jpg", 3623, 5435, "CC BY 4.0", "Supanut Arunoprayote"],
+  ["Cảng Victoria", "Hồng Kông", "6/6b/Hong_Kong_China_Junk-in-Victoria-Harbour-01.jpg", 3666, 2444, "CC BY-SA 3.0", "CEphoto, Uwe Aranas"],
+  ["Đền Vàng Amritsar", "Ấn Độ", "d/d0/Golden_Temple,_Amritsar_02.jpg", 5053, 3368, "CC BY-SA 4.0", "Bernard Gagnon"],
+  ["Tháp Eiffel", "Paris, Pháp", "a/a8/Tour_Eiffel_Wikimedia_Commons.jpg", 2900, 5367, "Public domain", "Benh LIEU SONG"],
+  ["Bảo tàng Louvre", "Paris, Pháp", "6/66/Louvre_Museum_Wikimedia_Commons.jpg", 6740, 2832, "CC BY-SA 3.0", "Benh LIEU SONG"],
+  ["Mont-Saint-Michel", "Normandie, Pháp", "7/78/Mont-Saint-Michel_vu_du_ciel.jpg", 4000, 2250, "CC BY-SA 4.0", "Amaustan"],
+  ["Cung điện Versailles", "Pháp", "b/b2/Versailles_Palace_(FRA)_%E2%80%93_Equestrian_Olympic_Venue.jpg", 4238, 2219, "CC BY-SA 3.0", "ToucanWings"],
+  ["Đấu trường La Mã", "Roma, Ý", "d/de/Colosseo_2020.jpg", 12051, 8442, "CC BY-SA 4.0", "FeaturedPics"],
+  ["Tháp nghiêng Pisa", "Ý", "4/4b/Italy_-_Pisa_-_Leaning_Tower.jpg", 3257, 4544, "CC BY-SA 3.0 de", "Arne Müseler"],
+  ["Kênh đào Venezia", "Venezia, Ý", "5/51/View_of_the_Grand_Canal_from_Rialto_to_Ca'Foscari.jpg", 7360, 4026, "CC BY-SA 4.0", "Didier Descouens"],
+  ["Đài phun nước Trevi", "Roma, Ý", "7/76/Fontana_di_Trevi_2023.jpg", 7568, 5668, "CC BY-SA 4.0", "Fiat 500e"],
+  ["Vương cung thánh đường Thánh Phêrô", "Vatican", "f/f5/Basilica_di_San_Pietro_in_Vaticano_September_2015-1a.jpg", 13066, 6823, "CC BY-SA 4.0", "Alvesgaspar"],
+  ["Nhà thờ Sagrada Família", "Barcelona, Tây Ban Nha", "8/8c/Sagrada_Familia_March_2015-9a.jpg", 4453, 7178, "CC BY-SA 4.0", "Alvesgaspar"],
+  ["Cung điện Alhambra", "Granada, Tây Ban Nha", "d/de/Dawn_Charles_V_Palace_Alhambra_Granada_Andalusia_Spain.jpg", 4592, 3056, "CC0", "Jebulon"],
+  ["Tháp đồng hồ Big Ben", "London, Anh", "3/32/Elizabeth_Tower_seen_from_Great_George_Street,_London.jpg", 4997, 7495, "CC BY-SA 4.0", "Christian David"],
+  ["Cầu Tháp London", "London, Anh", "3/33/Tower_Bridge_Lights.jpg", 2826, 4239, "CC BY-SA 3.0", "Martin Falbisoner"],
+  ["Bãi đá cổ Stonehenge", "Anh", "3/3c/Stonehenge2007_07_30.jpg", 2816, 2112, "CC BY 2.0", "garethwiscombe"],
+  ["Lâu đài Edinburgh", "Scotland", "b/bb/Edinburgh_Castle_from_Esplanade_20211019.jpg", 3832, 2750, "CC BY-SA 3.0", "Daniel Kraft"],
+  ["Lâu đài Neuschwanstein", "Bayern, Đức", "b/bf/Neuschwanstein_Castle,_Germany,_20250501_1601_8423.jpg", 2824, 4232, "CC BY 4.0", "Jakub Hałun"],
+  ["Cổng Brandenburg", "Berlin, Đức", "a/a6/Brandenburger_Tor_abends.jpg", 1920, 1280, "CC BY-SA 3.0", "Thomas Wolf"],
+  ["Nhà thờ lớn Köln", "Đức", "0/07/K%C3%B6lner_Dom_2013-08-04-005.JPG", 3843, 5896, "CC BY 3.0", "Rolf Heinrich"],
+  ["Đồi Acropolis", "Athens, Hy Lạp", "2/2c/1029_Acropolis_of_Athens_in_Greece_at_night_Photo_by_Giles_Laurent.jpg", 8640, 5760, "CC BY-SA 4.0", "Giles Laurent"],
+  ["Đảo Santorini", "Hy Lạp", "6/6b/07-17-2012_-_Oia_-_Santorini_-_Greece_-_31.jpg", 2649, 4000, "CC BY-SA 3.0", "Norbert Nagel"],
+  ["Nhà thờ Thánh Basil", "Moskva, Nga", "1/18/Saint_Basil's_Cathedral_in_Moscow.jpg", 2000, 2218, "CC BY-SA 4.0", "Tsy1980"],
+  ["Cầu Charles", "Praha, Séc", "8/86/Prague_Charles_Bridge_2021_20.jpg", 3000, 4512, "CC BY-SA 4.0", "Scotch Mist"],
+  ["Làng Hallstatt", "Áo", "b/b0/Hallstatt_-_Zentrum_.JPG", 3937, 2717, "CC BY-SA 4.0", "C.Stadler/Bwag"],
+  ["Cung điện Schönbrunn", "Viên, Áo", "5/55/Wien,_Schloss_Sch%C3%B6nbrunn_--_2018_--_3259.jpg", 4378, 6567, "CC BY-SA 4.0", "Dietmar Rabich"],
+  ["Đỉnh Matterhorn", "Thụy Sĩ", "3/3c/Matterhorn_%26_wooden_cottages,_March_2019_(03).jpg", 3986, 5979, "CC BY-SA 4.0", "Liridon"],
+  ["Vách đá Moher", "Ireland", "d/d1/Cliffs-Of-Moher-OBriens-From-South.JPG", 4608, 3456, "CC BY-SA 3.0", "Bjørn Christian Tørrissen"],
+  ["Kênh đào Amsterdam", "Hà Lan", "f/f2/Amsterdam,_Keizersgracht_182tm196_met_RM2518tm25_en_op_de_achtergrond_de_toren_van_de_Westerkerk_RM4298_IMG_0957_2026-04-06_11.00.jpg", 3080, 5056, "CC BY 4.0", "Michielverbeek"],
+  ["Phố cổ Dubrovnik", "Croatia", "6/67/The_walls_of_the_fortress_and_View_of_the_old_city._panorama.jpg", 3543, 2198, "CC BY-SA 4.0", "Zysko serhii"],
+  ["Hồ Plitvice", "Croatia", "3/39/View_in_Plitvice_Lakes_National_Park.jpg", 2437, 3459, "CC BY-SA 4.0", "Zysko serhii"],
+  ["Vịnh hẹp Geiranger", "Na Uy", "4/46/Geirangerfjord_.jpg", 7193, 4795, "CC BY-SA 2.5", "Andreas Trepte"],
+  ["Hồ Bled", "Slovenia", "3/31/Blejsko_jezero_(Lake_Bled_in_autumn).jpg", 4608, 3456, "CC BY-SA 4.0", "Petar Milošević"],
+  ["Tượng Nữ thần Tự do", "New York, Hoa Kỳ", "8/89/Front_view_of_Statue_of_Liberty_(cropped).jpg", 2498, 3828, "CC0", "AskALotl"],
+  ["Cầu Cổng Vàng", "San Francisco, Hoa Kỳ", "d/df/Golden_Gate_bridge_3.jpg", 3072, 4608, "CC BY-SA 4.0", "Sebring12Hrs"],
+  ["Hẻm núi Grand Canyon", "Arizona, Hoa Kỳ", "0/01/Grand_Canyon_(Arizona,_USA),_South_Rim_nahe_Tusayan_--_2012_--_5848.jpg", 3456, 5184, "CC BY-SA 4.0", "Dietmar Rabich"],
+  ["Thác Niagara", "Mỹ – Canada", "e/e4/Rainbow_Horseshoe_Falls.JPG", 3264, 4928, "CC BY-SA 4.0", "Gzzz"],
+  ["Quảng trường Thời Đại", "New York, Hoa Kỳ", "2/26/Times_Square_nachts-20120518-RM-015143.jpg", 2903, 4608, "CC BY-SA 4.0", "Ermell"],
+  ["Núi Half Dome – Yosemite", "California, Hoa Kỳ", "8/84/Half_Dome_with_Eastern_Yosemite_Valley_(Zuschnitt).jpg", 5979, 5635, "CC BY-SA 3.0", "Thomas Wolf"],
+  ["Hẻm núi Linh Dương", "Arizona, Hoa Kỳ", "c/c1/Upper_Antelope_Canyon_Heart_Formation_2013.jpg", 2842, 4862, "CC BY-SA 3.0", "Tuxyso"],
+  ["Tháp CN", "Toronto, Canada", "d/df/CN_Tower_at_night,_Toronto,_Ontario,_2026-06-27_01.jpg", 3634, 5451, "CC BY-SA 4.0", "Chris Woodrich"],
+  ["Hồ Moraine – Banff", "Canada", "a/aa/Moraine_Lake,_view_from_south_shore_20240823_3.jpg", 7690, 5127, "CC BY-SA 4.0", "DXR"],
+  ["Thành cổ Machu Picchu", "Peru", "b/bb/Machu_Picchu,_2023_(012).jpg", 6960, 4640, "CC BY-SA 4.0", "Draceane"],
+  ["Tượng Chúa Cứu Thế", "Rio de Janeiro, Brazil", "4/4f/Christ_the_Redeemer_-_Cristo_Redentor.jpg", 2497, 3744, "CC BY-SA 3.0 de", "Arne Müseler"],
+  ["Thác Iguazu", "Argentina – Brazil", "1/10/20170821_Iguaz%C3%BA-Wasserf%C3%A4lle_(Brasilien).jpg", 6000, 4000, "CC BY-SA 4.0", "Matthias Bethke"],
+  ["Kim tự tháp Chichén Itzá", "México", "5/51/Chichen_Itza_3.jpg", 9771, 5197, "CC BY-SA 4.0", "Daniel Schwen"],
+  ["Sông băng Perito Moreno", "Argentina", "5/5c/Los_Glaciares_-_Glaciar_Perito_Moreno_006.jpg", 3984, 5976, "CC BY-SA 4.0", "Gedankenstuecke"],
+  ["Cánh đồng muối Uyuni", "Bolivia", "3/38/Salar_de_Uyuni,_Bolivia,_2016-02-04,_DD_36.JPG", 4811, 7908, "CC BY-SA 4.0", "Diego Delso"],
+  ["Torres del Paine", "Chile", "c/ce/Torres_del_Paine_y_cuernos_del_Paine,_montaje.jpg", 1920, 2430, "CC BY 4.0", "Karen Chan, Miguel.v"],
+  ["Thác Thiên Thần", "Venezuela", "e/e7/Angel_Falls_(Entire_Drop)_(9224164461).jpg", 3456, 5184, "CC BY 2.0", "Nicholas A. Tonelli"],
+  ["Kim tự tháp Giza", "Ai Cập", "9/9e/The_Great_Pyramid_of_Giza_from_southeast_corner.JPG", 6000, 4000, "CC BY-SA 4.0", "MusikAnimal"],
+  ["Tượng Nhân sư Giza", "Ai Cập", "4/42/Sphinx_with_the_third_pyramid.jpg", 3872, 2404, "CC0", "Hesham Ebaid"],
+  ["Đền Abu Simbel", "Ai Cập", "7/7d/Templo_de_Rams%C3%A9s_II,_Abu_Simbel,_Egipto,_2022-04-02,_DD_05.jpg", 4301, 6451, "CC BY-SA 4.0", "Diego Delso"],
+  ["Thác Victoria", "Zambia – Zimbabwe", "d/da/Cataratas_Victoria,_Zambia-Zimbabue,_2018-07-27,_DD_04.jpg", 4203, 6530, "CC BY-SA 4.0", "Diego Delso"],
+  ["Núi Bàn", "Cape Town, Nam Phi", "7/78/View_of_Table_Mountain_from_Signal_Hill_2.jpg", 3456, 5184, "CC BY-SA 4.0", "Mike Peel"],
+  ["Núi Kilimanjaro", "Tanzania", "6/6c/Kilimanjaro_from_Amboseli.jpg", 3043, 2036, "CC BY-SA 4.0", "Sergey Pesterev"],
+  ["Thành phố xanh Chefchaouen", "Maroc", "7/7c/Chefchaouen-the-blue-city-of-morocco-with-palm-trees-and-the-mountain-view-in-the-backrgound.jpg", 6048, 4024, "CC BY-SA 4.0", "Badr Rachadi"],
+  ["Nhà hát Opera Sydney", "Úc", "0/0f/Sydney_Opera_House_and_Harbour_Bridge,_southeast_view_20230224_1.jpg", 7924, 4457, "CC BY-SA 4.0", "DXR"],
+  ["Khối đá Uluru", "Úc", "a/a8/ULURU.jpg", 2048, 1536, "CC BY-SA 4.0", "Ek2030372672"],
+  ["Vịnh hẹp Milford", "New Zealand", "2/21/Milford_Sound_in_Fiordland_National_Park_16.jpg", 2299, 2685, "CC BY-SA 4.0", "Krzysztof Golik"],
+  ["Mười hai Tông đồ", "Victoria, Úc", "c/c4/Princetown_(AU),_Port_Campbell_National_Park,_Twelve_Apostles_--_2019_--_1020.jpg", 4462, 6693, "CC BY-SA 4.0", "Dietmar Rabich"],
+  ["Đảo Bora Bora", "Polynésie thuộc Pháp", "f/fe/Mount_Otemanu_Bora_Bora.jpg", 3024, 4032, "CC BY-SA 4.0", "Athos33320"]
+  ];
+  const BASE = 'https://upload.wikimedia.org/wikipedia/commons/';
+  window.SCENES_100 = RAW.map(([name, place, p, w, h, lic, art], i) => {
+    const local = p.startsWith('local:');
+    const file = local ? p.slice(6) : p.split('/').pop();
+    const portrait = h > w;
+    const W = portrait ? 1280 : 1920;
+    const url = local ? file : (w > W ? BASE + 'thumb/' + p + '/' + W + 'px-' + file : BASE + p);
+    return {
+      id: i, name, place, portrait, url,
+      fallback: local ? null : BASE + p,
+      vn: /Việt Nam/.test(place),
+      credit: local ? (art || 'Ảnh của bạn') : ('Ảnh: ' + art + ' · ' + lic + ' · Wikimedia Commons'),
+      link: local ? '' : 'https://commons.wikimedia.org/wiki/File:' + file
+    };
+  });
+})();

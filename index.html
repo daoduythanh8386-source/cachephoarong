@@ -126,9 +126,9 @@
           <button data-v="tron" class="on">✦ Hỗn hợp</button><button data-v="tu">Từ đơn</button><button data-v="cap">Cặp từ đôi L–N</button><button data-v="cum">Từ đôi</button><button data-v="cau">Câu · ca dao</button><button data-v="on" id="modeReview">Ôn từ hay sai</button>
         </div>
       </div>
-      <div class="group"><label>Cảnh nền</label>
+      <div class="group"><label>Cảnh nền · mỗi câu đổi một cảnh</label>
         <div class="seg" id="sceneSeg">
-          <button data-v="auto" class="on">Luân phiên</button><button data-v="thanglong">Hoàng thành Thăng Long</button><button data-v="doclap">Dinh Độc Lập</button>
+          <button data-v="world" class="on">🌏 100 danh thắng</button><button data-v="vn">🇻🇳 Việt Nam</button><button data-v="thanglong">Thăng Long</button><button data-v="doclap">Độc Lập</button>
         </div>
       </div>
       <div class="group opts">
@@ -149,13 +149,13 @@
         <div><b id="stBank">0</b><small>mục trong kho</small></div>
       </div>
       <details class="more">
-        <summary>Mẹo phát âm L / N · Ảnh nền riêng</summary>
+        <summary>Mẹo phát âm L / N · Ảnh nền · <a href="xem-canh.html" target="_blank">Xem 100 cảnh</a></summary>
         <p><b>L</b> – đầu lưỡi chạm lợi trên, hơi thoát ra hai bên lưỡi, không qua mũi. Bịt mũi vẫn đọc được “la”.</p>
         <p><b>N</b> – lưỡi áp kín lợi trên, hơi ra đằng mũi. Chạm cánh mũi khi đọc “na” thấy rung.</p>
-        <p>Ảnh nền: dùng ảnh thật lấy từ Wikimedia Commons. Muốn dùng ảnh của bạn: chọn ảnh dưới đây (chỉ cho lần chơi này), hoặc chép ảnh vào thư mục <code>assets/</code> với tên <code>hoang-thanh-thang-long.jpg</code> và <code>dinh-doc-lap.jpg</code>.</p>
+        <p>Ảnh nền: 100 ảnh chụp thật, độ phân giải cao từ Wikimedia Commons (ghi tên tác giả, giấy phép ở góc ảnh). Muốn dùng ảnh của bạn: chọn ảnh dưới đây (chỉ cho lần chơi này), hoặc chép ảnh vào thư mục <code>assets/</code> với tên <code>hoang-thanh-thang-long.jpg</code> và <code>dinh-doc-lap.jpg</code>.</p>
         <div class="own">
-          <label class="btn glass sm">Ảnh Thăng Long…<input type="file" accept="image/*" data-scene="thanglong" hidden></label>
-          <label class="btn glass sm">Ảnh Dinh Độc Lập…<input type="file" accept="image/*" data-scene="doclap" hidden></label>
+          <label class="btn glass sm">Ảnh Thăng Long…<input type="file" accept="image/*" data-scene="0" hidden></label>
+          <label class="btn glass sm">Ảnh Dinh Độc Lập…<input type="file" accept="image/*" data-scene="1" hidden></label>
         </div>
       </details>
       <p class="credit-foot">🐟 Cá chép hóa rồng – chơi để sửa L / N<br>Game by <b>Đào Duy Thanh</b> · since 2026</p>
@@ -186,6 +186,7 @@
 
 <script src="js/data.js"></script>
 <script src="js/speech.js"></script>
+<script src="js/scenes.js"></script>
 <script src="js/carp3d.js"></script>
 <script src="js/game.js"></script>
 <script src="js/inapp.js"></script>

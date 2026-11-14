@@ -8,47 +8,52 @@
   const LN = window.LN, BANK = window.WORD_BANK;
   const KEY = 'caChepVuMon_v3';
 
-  // ---------- cảnh nền (ảnh thật – Wikimedia Commons, có thể thay bằng ảnh riêng) ----------
-  const WM = 'https://upload.wikimedia.org/wikipedia/commons/';
-  const SCENES = {
-    thanglong: {
-      name: 'Hoàng thành Thăng Long', sub: 'Cổng Đoan Môn · Ba Đình, Hà Nội',
-      srcs: ['assets/hoang-thanh-thang-long.jpg', WM + 'thumb/4/41/Thang_Long_Citadel.jpg/1280px-Thang_Long_Citadel.jpg',
-             'https://commons.wikimedia.org/wiki/Special:FilePath/Thang_Long_Citadel.jpg?width=1600', WM + '4/41/Thang_Long_Citadel.jpg'],
-      credit: 'Ảnh: Đoan Môn – Wikimedia Commons (CC BY-SA)', link: 'https://commons.wikimedia.org/wiki/File:Thang_Long_Citadel.jpg'
-    },
-    doclap: {
-      name: 'Dinh Độc Lập', sub: '135 Nam Kỳ Khởi Nghĩa · TP. Hồ Chí Minh',
-      srcs: ['assets/dinh-doc-lap.jpg', WM + 'thumb/e/ec/Independence_Palace_or_Reunification_Palace_%2812110625233%29.jpg/1280px-Independence_Palace_or_Reunification_Palace_%2812110625233%29.jpg',
-             'https://commons.wikimedia.org/wiki/Special:FilePath/Independence_Palace_or_Reunification_Palace_(12110625233).jpg?width=1600',
-             WM + 'e/ec/Independence_Palace_or_Reunification_Palace_%2812110625233%29.jpg'],
-      credit: 'Ảnh: Clay Gilliland – Wikimedia Commons (CC BY-SA 2.0)', link: 'https://commons.wikimedia.org/wiki/File:Independence_Palace_or_Reunification_Palace_(12110625233).jpg'
-    }
-  };
-  const loaded = {};   // scene → url đã tải được
+  // ---------- cảnh nền: 100 danh lam thắng cảnh (js/scenes.js), mỗi câu đổi 1 cảnh ----------
+  const ALL = window.SCENES_100 || [];
+  // ảnh riêng trong assets/ được ưu tiên cho 2 cảnh gốc (nếu có)
+  const LOCAL = { 0: 'assets/hoang-thanh-thang-long.jpg', 1: 'assets/dinh-doc-lap.jpg' };
+  const cache = {};                       // id → url đã tải
   function loadImg(list) {
     return new Promise(res => {
       let i = 0;
       const next = () => {
         if (i >= list.length) return res(null);
-        const url = list[i++], im = new Image();
+        const url = list[i++]; if (!url) return next();
+        const im = new Image();
         im.onload = () => res(url); im.onerror = next; im.src = url;
       };
       next();
     });
   }
-  let bgFront = 'A', curScene = null;
-  async function setScene(key) {
-    if (curScene === key) return;
-    curScene = key;
-    const sc = SCENES[key];
-    $('placeName').textContent = sc.name; $('placeSub').textContent = sc.sub;
-    const cr = $('credit'); cr.textContent = sc.custom ? 'Ảnh của bạn' : sc.credit; cr.href = sc.custom ? '#' : sc.link;
-    const url = sc.custom || loaded[key] || (loaded[key] = await loadImg(sc.srcs));
-    if (curScene !== key) return;
+  const srcList = sc => [sc.custom, LOCAL[sc.id], sc.url, sc.fallback];
+  function preload(sc) { if (sc && !cache[sc.id]) cache[sc.id] = loadImg(srcList(sc)); return cache[sc.id]; }
+  let bgFront = 'A', curScene = null, order = [], orderPos = 0;
+  function buildOrder() {
+    let ids = ALL.map(s => s.id);
+    if (opt.scene === 'vn') ids = ALL.filter(s => s.vn).map(s => s.id);
+    else if (opt.scene === 'thanglong') ids = [0];
+    else if (opt.scene === 'doclap') ids = [1];
+    else if (opt.scene === 'world') {
+      // xáo trộn nhưng giữ cảnh Việt Nam rải đều
+      ids = shuffle(ids);
+    }
+    if (opt.scene === 'vn') ids = shuffle(ids);
+    order = ids; orderPos = Math.floor(Math.random() * ids.length);
+  }
+  function nextSceneObj() { if (!order.length) buildOrder(); const sc = ALL[order[orderPos % order.length]]; orderPos++; preload(ALL[order[orderPos % order.length]]); return sc; }
+  async function setScene(sc) {
+    if (!sc || curScene === sc.id) return;
+    curScene = sc.id;
+    $('placeName').textContent = sc.name; $('placeSub').textContent = sc.place;
+    const cr = $('credit'); cr.textContent = sc.custom ? 'Ảnh của bạn' : sc.credit;
+    if (sc.link && !sc.custom) cr.href = sc.link; else cr.removeAttribute('href');
+    const pt = $('placeTag'); pt.classList.remove('show'); void pt.offsetWidth; pt.classList.add('show');
+    const url = await preload(sc);
+    if (curScene !== sc.id) return;
     const back = bgFront === 'A' ? 'B' : 'A', el = $('bg' + back), old = $('bg' + bgFront);
     if (url) { el.style.backgroundImage = `url("${url}")`; el.classList.remove('fallback'); $('reflect').style.backgroundImage = `url("${url}")`; }
-    else { el.style.backgroundImage = ''; el.classList.add('fallback'); $('reflect').style.backgroundImage = ''; cr.textContent = 'Chưa tải được ảnh – kiểm tra mạng hoặc thêm ảnh vào assets/'; }
+    else { el.style.backgroundImage = ''; el.classList.add('fallback'); $('reflect').style.backgroundImage = ''; cr.textContent = 'Chưa tải được ảnh – kiểm tra mạng'; }
+    el.style.animation = 'none'; void el.offsetWidth; el.style.animation = '';
     el.classList.add('on'); old.classList.remove('on'); bgFront = back;
   }
 
@@ -121,7 +126,7 @@
     nl: { n: 12, time: 7, cats: { tu: 0.15, cap: 0.25, cum: 0.35, cau: 0.25 }, maxLv: 3, final: 'cau' },
     ct: { n: 8, time: 14, cats: { tu: 0.45, cap: 0.25, cum: 0.3 }, maxLv: 3, big: true, final: 'cum' }
   };
-  const opt = { age: 'hs', mode: 'tron', scene: 'auto', model: false, sound: true, noMic: false };
+  const opt = { age: 'hs', mode: 'tron', scene: 'world', model: false, sound: true, noMic: false };
 
   function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.random() * (i + 1) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; }
   const pick = arr => arr[Math.random() * arr.length | 0];
@@ -381,17 +386,14 @@
     $('hudCount').textContent = `${Math.min(G.i + 1, G.q.length)}/${G.q.length}`;
     $('progBar').style.width = (G.i / G.q.length * 100) + '%';
   }
-  function sceneFor(i) {
-    if (opt.scene !== 'auto') return opt.scene;
-    return i < G.q.length / 2 ? 'thanglong' : 'doclap';
-  }
+
 
   async function showGate() {
     const cur = G.cur = G.q[G.i];
     G.tries = 0; G.phase = 'pre'; G.weakRound[cur.text] = G.weakRound[cur.text] && cur.again ? 1 : 0;
-    const sc = sceneFor(G.i);
-    if (sc !== curScene) { setScene(sc); toast(SCENES[sc].name, 'info'); }
-    $('hudStage').textContent = cur.final ? 'Vũ Môn' : (sc === 'thanglong' ? 'Chặng Thăng Long' : 'Chặng Độc Lập');
+    const sc = nextSceneObj();
+    setScene(sc);
+    $('hudStage').textContent = cur.final ? 'Vũ Môn' : sc.name;
     hud();
     $('cardKind').textContent = kindLabel(cur) + (cur.again ? ' · ĐỌC LẠI' : '');
     const cw = $('cardWord'); cw.innerHTML = opt.noMic ? blankHTML(cur) : wordHTML(cur.text);
@@ -448,7 +450,7 @@
         if (!initMic()) { opt.noMic = true; $('choice').hidden = false; $('micBtn').hidden = true; $('micLabel').hidden = true; toast('Trình duyệt chưa hỗ trợ micro – chuyển sang nghe & chọn', 'info'); }
       } else if (listener) listener.start();
     }
-    curScene = null;
+    curScene = null; buildOrder();
     showGate();
   }
 
@@ -515,14 +517,14 @@
   }
   seg('ageSeg', 'age', v => { $('optModel').checked = !!AGE[v].model; opt.model = !!AGE[v].model; });
   seg('modeSeg', 'mode');
-  seg('sceneSeg', 'scene', v => setScene(v === 'auto' ? 'thanglong' : v));
+  seg('sceneSeg', 'scene', () => { buildOrder(); setScene(nextSceneObj()); });
   $('optModel').onchange = e => opt.model = e.target.checked;
   $('optSound').onchange = e => opt.sound = e.target.checked;
   $('btnStart').onclick = () => { opt.noMic = false; start(); };
   $('btnNoMic').onclick = () => { opt.noMic = true; if (listener) listener.stop(); start(); };
   document.querySelectorAll('.own input').forEach(inp => inp.addEventListener('change', () => {
     const f = inp.files && inp.files[0]; if (!f) return;
-    const sc = inp.dataset.scene; SCENES[sc].custom = URL.createObjectURL(f);
+    const sc = ALL[+inp.dataset.scene]; sc.custom = URL.createObjectURL(f); delete cache[sc.id];
     curScene = null; setScene(sc); toast('Đã đổi ảnh nền', 'info');
   }));
 
@@ -547,7 +549,7 @@
   }
   window.__game = { G, start, opt, onSpeech: r => onSpeech(r) };
   refreshHome();
-  setScene('thanglong');
+  buildOrder(); setScene(ALL[0]);
   // giọng đọc có thể tải muộn
   setTimeout(refreshHome, 1200);
 })();
