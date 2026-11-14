@@ -431,10 +431,19 @@
     }
   }));
 
-  function next() {
+  const CHANG = 5;                      // số cổng mỗi chặng
+  async function next() {
     $('gate').hidden = true;
     G.i++;
     if (G.i >= G.q.length) return finish();
+    // qua mỗi chặng: cảnh động cá chép hóa rồng + pháo hoa
+    if (G.i % CHANG === 0 && window.HoaRong) {
+      const chang = G.i / CHANG;
+      G.phase = 'stage'; pauseMic(); G.score += 30; hud();
+      await window.HoaRong.play({ title: 'HÓA RỒNG!', sub: `Qua chặng ${chang} · thưởng +30 điểm`, sound: opt.sound });
+      if (G.phase !== 'stage') return;
+      resumeMic();
+    }
     showGate();
   }
 
@@ -454,10 +463,11 @@
     showGate();
   }
 
-  function finish() {
+  async function finish() {
     G.phase = 'idle'; G.cur = null;
     if (listener) listener.stop();
     ['hud', 'card', 'micbar'].forEach(id => $(id).hidden = true);
+    if (G.finalOk && window.HoaRong) await window.HoaRong.play({ title: 'CÁ CHÉP HÓA RỒNG!', sub: 'Vượt Vũ Môn thành công · ' + G.score + ' điểm', big: true, sound: opt.sound });
     const total = G.q.length, rate = G.right / total;
     $('enScore').textContent = G.score; $('enRight').textContent = G.right; $('enFixed').textContent = G.fixed; $('enMiss').textContent = G.miss;
     $('endStars').textContent = rate >= 0.85 ? '★★★' : rate >= 0.6 ? '★★☆' : '★☆☆';
@@ -550,6 +560,7 @@
   window.__game = { G, start, opt, onSpeech: r => onSpeech(r) };
   refreshHome();
   buildOrder(); setScene(ALL[0]);
+  window.HoaRong && window.HoaRong.preload();
   // giọng đọc có thể tải muộn
   setTimeout(refreshHome, 1200);
 })();

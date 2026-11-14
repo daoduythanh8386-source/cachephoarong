@@ -32,6 +32,17 @@ Không có micro thì chọn **“Nghe & chọn L/N”**: máy đọc từ, ngư
 - **Firefox**: không có nhận dạng sẵn → nút micro thành “giữ để nói”. Bản ghi được gửi tới `api/transcribe` (cần `OPENAI_API_KEY` trên Vercel như bản V2).
 - Micro chỉ chạy trên **https://** hoặc `localhost`. Mở file `index.html` trực tiếp sẽ không có micro.
 
+## Cảnh động “Cá chép hóa rồng”
+
+Mỗi 5 cổng là một chặng. Qua mỗi chặng, game chiếu đoạn động khoảng 7 giây dùng ảnh `assets/ca-chep-hoa-rong.jpg`. Ảnh được giữ nguyên hình và nét, mọi hiệu ứng chỉ phủ lên phía trên ảnh:
+1. Khung hình bắt đầu cận cảnh con cá chép đang nhảy khỏi sóng, rồi lia dần lên con rồng vàng.
+2. Ánh sáng vàng lóe lên hai lần. Sau đó có tia sáng xoay và quầng sáng tỏa quanh rồng.
+3. Pháo hoa bắn lên và nổ liên tục, có tiếng nổ và tiếng nhạc chuông.
+4. Hiện chữ **HÓA RỒNG!**, dòng “Qua chặng N · thưởng +30 điểm” và nút **Bơi tiếp**. Chạm màn hình để bỏ qua.
+
+Khi vượt cổng cuối Vũ Môn, game chiếu bản dài hơn với chữ **CÁ CHÉP HÓA RỒNG!**. Micro tự tắt trong lúc chiếu.
+Muốn đổi ảnh, chỉ cần thay file `assets/ca-chep-hoa-rong.jpg`. Ảnh nên là ảnh dọc, cá ở dưới, rồng ở trên.
+
 ## Ảnh nền: 100 danh lam thắng cảnh
 
 Mỗi câu (mỗi cổng) đổi sang một cảnh mới. Có 100 ảnh chụp thật, độ phân giải cao, lấy từ Wikimedia Commons, ghi tên tác giả và giấy phép ở góc ảnh. Gồm 13 cảnh Việt Nam và 87 cảnh thế giới ở châu Á, châu Âu, châu Mỹ, châu Phi và châu Đại Dương.

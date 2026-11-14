@@ -152,7 +152,7 @@ h1{font-size:clamp(24px,6vw,34px)}
 .fix-actions .btn.glass{background:rgba(90,20,6,.08);border-color:rgba(90,20,6,.25);color:#5a1406}
 
 /* kết thúc */
-.dragon{display:block;width:min(70vw,320px);margin:-6px auto 0;filter:drop-shadow(0 0 30px rgba(255,200,80,.6));animation:float 3s ease-in-out infinite}
+.dragon{display:block;width:min(46vw,200px);aspect-ratio:941/1672;object-fit:cover;margin:0 auto 6px;border-radius:18px;box-shadow:0 0 0 2px rgba(255,215,120,.6),0 0 34px rgba(255,190,70,.55);animation:float 3s ease-in-out infinite}
 @keyframes float{50%{transform:translateY(-10px)}}
 #end h2{text-align:center}
 .stars{text-align:center;font-size:36px;color:var(--gold);letter-spacing:6px;text-shadow:0 0 18px rgba(255,200,80,.7)}
